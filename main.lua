@@ -17,7 +17,7 @@ local text_buffer_list = {
 -- +--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 local settings = {
     fullscreen = false,
-    screenScaler = 2,
+    screenScaler = 1,
     width = 640,
     height = 360
 }
@@ -25,6 +25,7 @@ local settings = {
 mouse_x, mouse_y = ...
 
 function love.load()
+    love.keyboard.setKeyRepeat(true)
     game_manager.load()
     love.window.setTitle( 'inLove2D' )
     -- Set up the window with resizable option
@@ -56,6 +57,9 @@ function love.draw()
     -- print mouse cordinates
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
+
+    -- love.graphics.print(text,x,y,r,sx,sy,ox,oy)
+    love.graphics.print(text_buffer_list.textInput, 1, settings.height/2)
 
     love.graphics.pop()
 end
@@ -93,10 +97,14 @@ function love.keypressed(key)
             settings.fullscreen = false
         end 
     end
+
+    if key == 'backspace' then
+        -- text:sub(1, #text - 1)
+        text_buffer_list.textInput = string.sub(text_buffer_list.textInput, 1, -2)
+    end
 end
 
 
 function love.textinput(t)
     text_buffer_list.textInput = text_buffer_list.textInput .. t
-    print(text_buffer_list.textInput)
 end
