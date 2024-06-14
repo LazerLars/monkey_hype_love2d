@@ -4,6 +4,10 @@ end
 
 
 local game_manager = require "src.game_manager"
+
+local text_buffer_list = {
+    textInput = ""
+}
     -- recommended screen sizes
 ---+--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 -- | scale factor | desktop res | 1    | 2   | 3   | 4   | 5   | 6   | 8   | 10  |
@@ -92,3 +96,7 @@ function love.keypressed(key)
 end
 
 
+function love.textinput(t)
+    text_buffer_list.textInput = text_buffer_list.textInput .. t
+    print(text_buffer_list.textInput)
+end

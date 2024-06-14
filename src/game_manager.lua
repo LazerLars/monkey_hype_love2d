@@ -1,3 +1,6 @@
+
+local keyboard_manager = require "src.keyboard_manager"
+
 local game_manager = {}
 
 function game_manager.load()
@@ -5,7 +8,7 @@ function game_manager.load()
 end
 
 function game_manager.update()
-
+    
 end
 
 function game_manager.draw()
