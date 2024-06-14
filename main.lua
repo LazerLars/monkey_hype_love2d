@@ -2,6 +2,8 @@ if arg[2] == "debug" then
     require("lldebugger").start()
 end
 
+
+local game_manager = require "src.game_manager"
     -- recommended screen sizes
 ---+--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 -- | scale factor | desktop res | 1    | 2   | 3   | 4   | 5   | 6   | 8   | 10  |
@@ -12,16 +14,17 @@ end
 local settings = {
     fullscreen = false,
     screenScaler = 2,
-    logicalWidth = 640,
-    logicalHeight = 360
+    width = 640,
+    height = 360
 }
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
 function love.load()
+    game_manager.load()
     love.window.setTitle( 'inLove2D' )
     -- Set up the window with resizable option
-    love.window.setMode(settings.logicalWidth, settings.logicalHeight, {resizable=true, vsync=0, minwidth=settings.logicalWidth*settings.screenScaler, minheight=settings.logicalHeight*settings.screenScaler})
+    love.window.setMode(settings.width, settings.height, {resizable=true, vsync=0, minwidth=settings.width*settings.screenScaler, minheight=settings.height*settings.screenScaler})
     -- font = love.graphics.newFont('fonts/m6x11.ttf', 16)
     -- font = love.graphics.newFont('fonts/PressStart2P-Regular.ttf', 16)
     -- https://ggbot.itch.io/pixeloid-font
@@ -59,13 +62,13 @@ function calculateMouseOffsets()
     local windowWidth, windowHeight = love.graphics.getDimensions()
 
     -- Calculate the current scaling factor
-    scaleX = windowWidth / settings.logicalWidth
-    scaleY = windowHeight / settings.logicalHeight
+    scaleX = windowWidth / settings.width
+    scaleY = windowHeight / settings.height
     scale = math.min(scaleX, scaleY)
 
     -- Calculate the offsets to center the game
-    offsetX = (windowWidth - settings.logicalWidth * scale) / 2
-    offsetY = (windowHeight - settings.logicalHeight * scale) / 2
+    offsetX = (windowWidth - settings.width * scale) / 2
+    offsetY = (windowHeight - settings.height * scale) / 2
 
     -- Adjust mouse coordinates
     mouse_x, mouse_y = love.mouse.getPosition()
@@ -82,7 +85,7 @@ function love.keypressed(key)
             love.window.setFullscreen(true, "desktop")
             settings.fullscreen = true
         else
-            love.window.setMode(settings.logicalWidth, settings.logicalHeight, {resizable=true, vsync=0, minwidth=settings.logicalWidth*settings.screenScaler, minheight=settings.logicalHeight*settings.screenScaler})
+            love.window.setMode(settings.width, settings.height, {resizable=true, vsync=0, minwidth=settings.width*settings.screenScaler, minheight=settings.height*settings.screenScaler})
             settings.fullscreen = false
         end 
     end
