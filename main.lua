@@ -97,29 +97,29 @@ function love.draw()
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
 
-    -- love.graphics.print(text,x,y,r,sx,sy,ox,oy)
-    -- text can be written between x=28 and x=612
-    -- max 37 chars on a single line
-    -- 20 pixel beteween each line
-    -- max 16 lines
-    -- first line start at x = 18
     -- ---------------------------------
-    -- test lines on screen
-    for i = 1, 16, 1 do
-        y = i * 20
-    ---------------------------------
-        love.graphics.print(i .. " some where over the rainbow", 1, y )    
-        
-    end
+    
+    -- test_lines_on_screen()
     -- set user input text color
 
-    love.graphics.print("Somewhere over the rainbow ^^", 24, settings.height/2)
+    -- text can be written between x=32 and x=608
+    -- max 36 chars on a single line
+    -- 20 pixel beteween each line
+    -- max 16 lines
+    -- first line start at x = 20
+    -- draw text to write
+    love.graphics.print("Somewhere over the rainbow ^^", 32, settings.height/2)
+    
+    --draw user text inptu
     love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
-    love.graphics.print(text_buffer_list.textInput, 24, settings.height/2)
-    love.graphics.print("AA", 612, settings.height/2)
+    love.graphics.print(text_buffer_list.textInput, 32, settings.height/2)
+
+    -- love.graphics.print("AA", 612, settings.height/2)
+    -- love.graphics.print("AA", 1, settings.height/2)
     -- reset text color to base
     love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
-    love.graphics.print(#text_buffer_list.textInput, 1, 20)
+    -- p
+    love.graphics.print("_ input#" .. #text_buffer_list.textInput, 250, 1)
 
     love.graphics.circle('fill', mouse_x, mouse_y, 5)
 
@@ -198,4 +198,13 @@ function read_text_file_to_table()
    for i, line in ipairs(words_list) do
        print("Line " .. i .. ": " .. line)
    end
+end
+
+function test_lines_on_screen()
+    for i = 1, 16, 1 do
+        y = i * 20
+    ---------------------------------
+        love.graphics.print(i .. " some where over the rainbow", 1, y )    
+        
+    end
 end
