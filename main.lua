@@ -35,6 +35,7 @@ local settings = {
 mouse_x, mouse_y = ...
 
 function love.load()
+    love.mouse.setVisible(false)
     love.keyboard.setKeyRepeat(true)
     
     game_manager.load()
@@ -46,6 +47,7 @@ function love.load()
     -- font = love.graphics.newFont('fonts/PressStart2P-Regular.ttf', 16)
     -- https://ggbot.itch.io/pixeloid-font
     -- pixeloid sizes: 9, 18, 36, 72, 144
+    -- size 18 = 10x14 + 2 px space  ~.... 12x14 
     font = love.graphics.newFont('fonts/PixeloidMono.ttf', 18)
     
     
@@ -72,7 +74,22 @@ function love.draw()
     love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
 
     -- love.graphics.print(text,x,y,r,sx,sy,ox,oy)
-    love.graphics.print(text_buffer_list.textInput, 1, settings.height/2)
+    -- text can be written between x=24 and x=622
+    -- max 50 chars on a single line
+    -- 18 pixel beteween each line
+    -- max 18 lines
+    -- first line start at x = 18
+    for i = 1, 18, 1 do
+        y = i * 18
+        
+        love.graphics.print(i .. " some where over the rainbow", 1, y )    
+        
+    end
+    love.graphics.print(text_buffer_list.textInput, 24, settings.height/2)
+    love.graphics.print("AA", 622, settings.height/2)
+    love.graphics.print(#text_buffer_list.textInput, 1, 20)
+
+    love.graphics.circle('fill', mouse_x, mouse_y, 5)
 
     love.graphics.pop()
 end
