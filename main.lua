@@ -4,22 +4,15 @@ end
 
 
 local utf8 = require("utf8")
-local game_manager = require "src.game_manager"
+local text_handler = require "src.text_hander"
 
 
 local text_buffer_list = {
     textInput = ""
 }
 
-local words_list = {}
 
-local base_path = "data/texts/words/"
-local text_file_names = {
-    common_eng_words =  base_path .. "common_eng_words.txt",
-    teen_slang = base_path .. "teen_slang.txt",
-    weird_slang = base_path .. "weird_swear_words.txt",
-    wiki_swear_words = base_path .. "wiki_swear_words.txt"
-}
+
     -- recommended screen sizes
 ---+--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 -- | scale factor | desktop res | 1    | 2   | 3   | 4   | 5   | 6   | 8   | 10  |
@@ -58,8 +51,6 @@ mouse_x, mouse_y = ...
 function love.load()
     love.mouse.setVisible(false)
     love.keyboard.setKeyRepeat(true)
-    
-    game_manager.load()
 
     love.window.setTitle( 'inLove2D' )
     -- Set up the window with resizable option
@@ -77,7 +68,8 @@ function love.load()
     
     love.graphics.setFont(font)
     love.graphics.setDefaultFilter("nearest", "nearest")
-    read_text_file_to_table()
+    text_handler.read_text_file_to_table()
+
 end
 
 
@@ -176,29 +168,7 @@ function love.textinput(t)
     text_buffer_list.textInput = text_buffer_list.textInput .. t
 end
 
-function read_text_file_to_table()
-    -- Open the file in read mode
-   local file, err = io.open(text_file_names.wiki_swear_words, "r")
-   local file, err = io.open(text_file_names.common_eng_words, "r")
 
-   -- Check for errors
-   if not file then
-       error("Error opening file: " .. err)
-   end
-
-   -- Read lines and insert them into the table
-   for line in file:lines() do
-       table.insert(words_list, line)
-   end
-
-   -- Close the file
-   file:close()
-
-   -- Print the lines to the console (for verification)
-   for i, line in ipairs(words_list) do
-       print("Line " .. i .. ": " .. line)
-   end
-end
 
 function test_lines_on_screen()
     for i = 1, 16, 1 do
