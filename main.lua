@@ -13,6 +13,7 @@ local text_buffer_list = {
 
 
 
+
     -- recommended screen sizes
 ---+--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 -- | scale factor | desktop res | 1    | 2   | 3   | 4   | 5   | 6   | 8   | 10  |
@@ -44,6 +45,12 @@ local settings = {
         g = 76,
         b = 127
     }
+}
+
+local play_settings = {
+    words = false,
+    sentances = true
+
 }
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
