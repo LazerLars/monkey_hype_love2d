@@ -44,9 +44,10 @@ function text_handler.read_text_file_to_table(file_name)
 
    -- Close the file
    file:close()
+   text_handler.print_out_words_list_quotes()
 end
 
-function text_handler.print_out_words_list()
+function text_handler.print_out_words_list_raw()
     -- Print the lines to the console (for verification)
     for i, line in ipairs(text_handler.words_list) do
         -- prints every line
@@ -59,11 +60,31 @@ function text_handler.print_out_words_list()
             end
 
             -- Extract author after "some qoute" - author name...  etc. + context
-            local author = line:match('"%s*-%s*(.-)$')
+            local author = line:match('Author:%s*(.-)$')
             if author then
                 print("author:" .. author) -- prints the extracted author
             end
             -- end for  loop
+        end
+end
+
+function text_handler.print_out_words_list_quotes()
+    -- Print the lines to the console (for verification)
+    for i, line in ipairs(text_handler.words_list) do
+        
+            -- Extract quote between double quotes etc. "some qoute "
+            local quote = line:match('"([^"]+)"')
+            -- Extract author after "some qoute" - author name...  etc. + context
+            local author = line:match('Author:%s*(.-)$')
+            if quote and author then
+                print(quote .. " - " .. author) -- prints the extracted quote without the double quotes
+            elseif quote and not author then
+                print("quote: " .. quote) -- prints the extracted quote without the double quotes
+                
+            end
+
+            
+            
         end
 end
 

@@ -49,7 +49,7 @@ local settings = {
 
 game_states = {
     words = 0,
-    quotes = 1
+    quotes_programmer = 1
 }
 game_state = 1
 -- global mouse variables to hold correct mouse pos in the scaled world 
@@ -75,7 +75,8 @@ function love.load()
     
     love.graphics.setFont(font)
     love.graphics.setDefaultFilter("nearest", "nearest")
-    if game_state == game_states.quotes then
+    if game_state == game_states.quotes_programmer then
+        -- read all words into the words list
         for index, value in pairs(text_handler.text_file_names.quotes) do
             print(value)
             text_handler.read_text_file_to_table(value)
