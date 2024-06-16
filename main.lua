@@ -4,7 +4,7 @@ end
 
 
 local utf8 = require("utf8")
-local text_handler = require "src.text_hander"
+local text_handler = require "src.text_handler"
 
 
 local text_buffer_list = {
@@ -47,11 +47,11 @@ local settings = {
     }
 }
 
-local play_settings = {
-    words = false,
-    sentances = true
-
+game_states = {
+    words = 0,
+    quotes = 1
 }
+game_state = 1
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -75,7 +75,20 @@ function love.load()
     
     love.graphics.setFont(font)
     love.graphics.setDefaultFilter("nearest", "nearest")
-    text_handler.read_text_file_to_table()
+    if game_state == game_states.quotes then
+        for index, value in pairs(text_handler.text_file_names.quotes) do
+            print(value)
+            text_handler.read_text_file_to_table(value)
+        end
+    elseif game_state == game_states.words then
+        -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
+        for index, value in pairs(text_handler.text_file_names.words) do
+            print(value)
+            text_handler.read_text_file_to_table(value)
+        end 
+    end
+    print(#text_handler.words_list)
+    print("...")
 
 end
 
