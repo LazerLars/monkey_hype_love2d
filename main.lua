@@ -80,6 +80,7 @@ function love.load()
         for index, value in pairs(text_handler.text_file_names.quotes) do
             print(value)
             text_handler.read_text_file_to_table(value)
+            text_handler.split_quote_and_author()
         end
     elseif game_state == game_states.words then
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
@@ -88,8 +89,7 @@ function love.load()
             text_handler.read_text_file_to_table(value)
         end 
     end
-    text_handler.split_quote_and_author()
-    print(#text_handler.words_list)
+    print(#text_handler.quotes_list)
     print("...")
 
 end
