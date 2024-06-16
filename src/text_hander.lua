@@ -37,9 +37,23 @@ function text_handler.read_text_file_to_table()
    file:close()
 
    -- Print the lines to the console (for verification)
-   for i, line in ipairs(text_handler.words_list) do
-       print("Line " .. i .. ": " .. line)
-   end
+    for i, line in ipairs(text_handler.words_list) do
+    -- prints every line
+        print("Line " .. i .. ": " .. line) -- prints entire line
+       
+-- Extract quote between double quotes
+        local quote = line:match('"([^"]+)"')
+        if quote then
+            print("quote: " .. quote) -- prints the extracted quote without the double quotes
+        end
+
+        -- Extract author after " - "
+        local author = line:match('"%s*-%s*(.-)$')
+        if author then
+            print("author:" .. author) -- prints the extracted author
+        end
+        -- end for  loop
+    end
 end
 
 return text_handler
