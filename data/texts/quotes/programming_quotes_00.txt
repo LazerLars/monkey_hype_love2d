@@ -204,53 +204,53 @@
 "Windows NT addresses 2 Gigabytes of RAM, which is more than any application will ever need." - Microsoft, on the development of Windows NT, 1992
 "We will never become a truly paper-less society until the Palm Pilot folks come out with WipeMe 1.0." - Andy Pierson
 "If it keeps up, man will atrophy all his limbs but the push-button finger." - Frank Lloyd Wright
-There are so many men who can figure costs, and so few who can measure values." - Author Unknown
-A corporation is a living organism; it has to continue to shed its skin. Methods have to change. Focus has to change. Values have to change. The sum total of those changes is transformation." - Andrew Grove
-The most dangerous kind of waste is the waste we do not recognize." - Shigeo Shingo
-Your lean process should be a lean process." - Author Unknown
-There is nothing so useless as doing efficiently that which should not be done at all." - Peter F. Drucker
-Continuous improvement is not about the things you do well - that's work.  Continuous improvement is about removing the things that get in the way of your work.  The headaches, the things that slow you down, that's what continuous improvement is all about." - Bruce Hamilton
-If you need a new process and don't install it, you pay for it without getting it." - Ken Stork
-Everything can be improved." - Clarence W. Barron
-Willful waste brings woeful want." - Thomas Fuller
-There are many experts on how things have been done up to now. If you think something could use a little improvement, you are the expert." - Robert Brault, www.robertbrault.com
-Amateurs work until they get it right.  Professionals work until they can't get it wrong." - Author Unknown
-It is not the employer who pays the wages.  He only handles the money.  It is the product that pays the wages." - Henry Ford, 1922
-Nature does constant value stream mapping - it's called evolution." - Carrie Latet
-Don't waste time learning the "tricks of the trade."  Instead, learn the trade." - James Charlton
-Time waste differs from material waste in that there can be no salvage.  The easiest of all wastes and the hardest to correct is the waste of time, because wasted time does not litter the floor like wasted material." - Henry Ford
-Waste is a tax on the whole people." - Albert W. Atwood
-When solving problems, dig at the roots instead of just hacking at the leaves." - Anthony J. D'Angelo, The College Blue Book
-A bad system will beat a good person every time." - W. Edwards Deming
-It is an immutable law in business that words are words, explanations are explanations, promises are promises but only performance is reality." - Harold Geneen
-We are too busy mopping the floor to turn off the faucet." - Author Unknown
-Watch the little things; a small leak will sink a great ship." - Benjamin Franklin
-Waste is worse than loss.  The time is coming when every person who lays claim to ability will keep the question of waste before him constantly.  The scope of thrift is limitless." - Thomas A. Edison
-It is more than probable that the average man could, with no injury to his health, increase his efficiency fifty percent." - Walter Scott
-The essential question is not, "How busy are you?" but "What are you busy at?" " - Oprah Winfrey
-A relentless barrage of "why's" is the best way to à your mind to pierce the clouded veil of thinking caused by the status quo.  Use it often." - Shigeo Shingo
-The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency." - Bill Gates
-The world we have created is a product of our thinking; it cannot be changed without changing our thinking." - Albert Einstein
-If you don't know where you are going, you will probably end up somewhere else." - Lawrence J. Peter
-Improvement usually means doing something that we have never done before." - Shigeo Shingo
-Work expands so as to fill the time available for its completion." - C. Northcote Parkinson, 1958
+"There are so many men who can figure costs, and so few who can measure values." - Author Unknown
+"A corporation is a living organism; it has to continue to shed its skin. Methods have to change. Focus has to change. Values have to change. The sum total of those changes is transformation." - Andrew Grove
+"The most dangerous kind of waste is the waste we do not recognize." - Shigeo Shingo
+"Your lean process should be a lean process." - Author Unknown
+"There is nothing so useless as doing efficiently that which should not be done at all." - Peter F. Drucker
+"Continuous improvement is not about the things you do well - that's work.  Continuous improvement is about removing the things that get in the way of your work.  The headaches, the things that slow you down, that's what continuous improvement is all about." - Bruce Hamilton
+"If you need a new process and don't install it, you pay for it without getting it." - Ken Stork
+"Everything can be improved." - Clarence W. Barron
+"Willful waste brings woeful want." - Thomas Fuller
+"There are many experts on how things have been done up to now. If you think something could use a little improvement, you are the expert." - Robert Brault, www.robertbrault.com
+"Amateurs work until they get it right.  Professionals work until they can't get it wrong." - Author Unknown
+"It is not the employer who pays the wages.  He only handles the money.  It is the product that pays the wages." - Henry Ford, 1922
+"Nature does constant value stream mapping - it's called evolution." - Carrie Latet
+"Don't waste time learning the "tricks of the trade."  Instead, learn the trade." - James Charlton
+"Time waste differs from material waste in that there can be no salvage.  The easiest of all wastes and the hardest to correct is the waste of time, because wasted time does not litter the floor like wasted material." - Henry Ford
+"Waste is a tax on the whole people." - Albert W. Atwood
+"When solving problems, dig at the roots instead of just hacking at the leaves." - Anthony J. D'Angelo, The College Blue Book
+"A bad system will beat a good person every time." - W. Edwards Deming
+"It is an immutable law in business that words are words, explanations are explanations, promises are promises but only performance is reality." - Harold Geneen
+"We are too busy mopping the floor to turn off the faucet." - Author Unknown
+"Watch the little things; a small leak will sink a great ship." - Benjamin Franklin
+"Waste is worse than loss.  The time is coming when every person who lays claim to ability will keep the question of waste before him constantly.  The scope of thrift is limitless." - Thomas A. Edison
+"It is more than probable that the average man could, with no injury to his health, increase his efficiency fifty percent." - Walter Scott
+"The essential question is not, "How busy are you?" but "What are you busy at?" " - Oprah Winfrey
+"A relentless barrage of "why's" is the best way to à your mind to pierce the clouded veil of thinking caused by the status quo.  Use it often." - Shigeo Shingo
+"The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency." - Bill Gates
+"The world we have created is a product of our thinking; it cannot be changed without changing our thinking." - Albert Einstein
+"If you don't know where you are going, you will probably end up somewhere else." - Lawrence J. Peter
+"Improvement usually means doing something that we have never done before." - Shigeo Shingo
+"Work expands so as to fill the time available for its completion." - C. Northcote Parkinson, 1958
 "If you would one day renovate yourself, do so from day to day.  Yea, let there be daily renovation." " - Confucian Analects
-An environment where people have to think brings with it wisdom, and this wisdom brings with it kaizen [continuous improvement]." - Teruyuki Minoura
-The impossible is often the untried." - Jim Goodwin
-The man who will use his skill and constructive imagination to see how much he can give for a dollar, instead of how little he can give for a dollar, is bound to succeed." - Henry Ford
-If you don't have time to do it right you must have time to do it over." - Author Unknown
-Ford's success has startled the country, almost the world, financially, industrially, mechanically.  It exhibits in higher degree than most persons would have thought possible the seemingly contradictory requirements of true efficiency, which are:  constant increase of quality, great increase of pay to the workers, repeated reduction in cost to the consumer.  And with these appears, as at once cause and effect, an absolutely incredible enlargement of output reaching something like one hundredfold in less than ten years, and an enormous profit to the manufacturer." - Charles Buxton Going
-Great ideas need landing gear as well as wings." - C.D. Jackson
-Different isn't always better, but better is always different." - Author Unknown
-He who rejects change is the architect of decay.  The only human institution which rejects progress is the cemetery." - Harold Wilson
-Invest a few moments in thinking.  It will pay good interest." - Author Unknown
-Don't water your weeds." - Harvey MacKay
-You must have long-range goals to keep you from being frustrated by short-range failures." - Charles C. Noble
-I don't like a man to be too efficient.  He's likely to be not human enough." - Felix Frankfurter
-If all efficiency experts were laid end to end - I'd be in favor of it." - Al Diamond
-One half of knowing what you want is knowing what you must give up before you get it." - Sidney Howard
-I shall try to correct errors when shown to be errors, and I shall adopt new views so fast as they appear to be true views." - Abraham Lincoln
-It is better to stir up a question without deciding it, than to decide it without stirring it up." - Joseph Joubert
+"An environment where people have to think brings with it wisdom, and this wisdom brings with it kaizen [continuous improvement]." - Teruyuki Minoura
+"The impossible is often the untried." - Jim Goodwin
+"The man who will use his skill and constructive imagination to see how much he can give for a dollar, instead of how little he can give for a dollar, is bound to succeed." - Henry Ford
+"If you don't have time to do it right you must have time to do it over." - Author Unknown
+"Ford's success has startled the country, almost the world, financially, industrially, mechanically.  It exhibits in higher degree than most persons would have thought possible the seemingly contradictory requirements of true efficiency, which are:  constant increase of quality, great increase of pay to the workers, repeated reduction in cost to the consumer.  And with these appears, as at once cause and effect, an absolutely incredible enlargement of output reaching something like one hundredfold in less than ten years, and an enormous profit to the manufacturer." - Charles Buxton Going
+"Great ideas need landing gear as well as wings." - C.D. Jackson
+"Different isn't always better, but better is always different." - Author Unknown
+"He who rejects change is the architect of decay.  The only human institution which rejects progress is the cemetery." - Harold Wilson
+"Invest a few moments in thinking.  It will pay good interest." - Author Unknown
+"Don't water your weeds." - Harvey MacKay
+"You must have long-range goals to keep you from being frustrated by short-range failures." - Charles C. Noble
+"I don't like a man to be too efficient.  He's likely to be not human enough." - Felix Frankfurter
+"If all efficiency experts were laid end to end - I'd be in favor of it." - Al Diamond
+"One half of knowing what you want is knowing what you must give up before you get it." - Sidney Howard
+"I shall try to correct errors when shown to be errors, and I shall adopt new views so fast as they appear to be true views." - Abraham Lincoln
+"It is better to stir up a question without deciding it, than to decide it without stirring it up." - Joseph Joubert
 "Quality is everyone's responsibility." - W. Edwards Deming 
 "It is not enough to do your best; you must know what to do, and then do your best." - W. Edwards Deming
 "Profit in business comes from repeat customers, customers that boast about your project or service, and that bring friends with them." - W. Edwards Deming
@@ -285,16 +285,16 @@ No change is bad" - Toyota President Katsuaki Watanabe (Osono et al 2008, 15)
 "Simplicity is the ultimate sophistication"- Leonardo da Vinci
 "Simplicity does not precede complexity, but follows it" - Alan Perlis
 "Productivity is being able to do things that you were never able to do before" - Franz Kafka
-~ Innovation is the process of turning ideas into manufacturable and marketable form." - Watts Humprey
-~ Creativity is thinking up new things. Innovation is doing new things." - Theodore Levitt
-~ Never before in history has innovation offered promise of so much to so many in so short a time." - Bill Gates
-~ Great innovations should not be forced on slender majorities." - Thomas Jefferson
-~ Innovation by definition will not be accepted at first. It takes repeated attempts, endless demonstrations, monotonous rehearsals before innovation can be accepted and internalized by an organization. This requires 'courageous patience'." - Warren Bennis
-~ Fashion is something barbarous, for it produces innovation without reason and imitation without benefit." - George Santayana
-~ You have all the reason in the world to achieve your grandest dreams. Imagination plus innovation equals realization." - Denis Waitley
-~ Entrepreneurs innovate. Innovation is the specific instrument of entrepreneurship. It is the act that endows resources with a new capacity to create wealth." - Peter F. Drucker
-~ The world leaders in innovation and creativity will also be world leaders in everything else." - Harold R. McAlindon
-~ Innovation is not the product of logical thought, although the result is tied to logical structure." - Albert Einstein
+"Innovation is the process of turning ideas into manufacturable and marketable form." - Watts Humprey
+"Creativity is thinking up new things. Innovation is doing new things." - Theodore Levitt
+"Never before in history has innovation offered promise of so much to so many in so short a time." - Bill Gates
+"Great innovations should not be forced on slender majorities." - Thomas Jefferson
+"Innovation by definition will not be accepted at first. It takes repeated attempts, endless demonstrations, monotonous rehearsals before innovation can be accepted and internalized by an organization. This requires 'courageous patience'." - Warren Bennis
+"Fashion is something barbarous, for it produces innovation without reason and imitation without benefit." - George Santayana
+"You have all the reason in the world to achieve your grandest dreams. Imagination plus innovation equals realization." - Denis Waitley
+"Entrepreneurs innovate. Innovation is the specific instrument of entrepreneurship. It is the act that endows resources with a new capacity to create wealth." - Peter F. Drucker
+"The world leaders in innovation and creativity will also be world leaders in everything else." - Harold R. McAlindon
+"Innovation is not the product of logical thought, although the result is tied to logical structure." - Albert Einstein
 "On n'innove jamais seul dans son coin" - Areva Innovation Motto
 "Shoot for the moon. Even if you miss, you'll land among the stars." - Unknown
 "Life would be so much easier if we only had the source code." - Unknown
@@ -357,33 +357,33 @@ No change is bad" - Toyota President Katsuaki Watanabe (Osono et al 2008, 15)
 "My definition of an expert in any field is a person who knows enough about what's really going on to be scared." – P. J. Plauger
 "First, solve the problem. Then, write the code." – John Johnson
 "Programming is not a zero-sum game. Teaching something to a fellow programmer doesn't take it away from you." – John Carmack
-One of my most productive days was throwing away 1000 lines of code  — Ken Thompson
-When in doubt, use brute force." - Ken Thompson
-Deleted code is debugged code." - Jeff Sickel
-Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." - Brian W. Kernighan and P. J. Plauger in The Elements of Programming Style.
-The most effective debugging tool is still careful thought, coupled with judiciously placed print statements." - Brian W. Kernighan, in the paper Unix for Beginners (1979)
-Controlling complexity is the essence of computer programming." - Brian Kernighan
-Beauty is more important in computing than anywhere else in technology because software is so complicated. Beauty is the ultimate defence against complexity." - David Gelernter
-UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things." - Doug Gwyn
-Life is too short to run proprietary software." - Bdale Garbee
-The central enemy of reliability is complexity." - Geer et al.
-Simplicity is prerequisite for reliability." - Edsger W. Dijkstra
-Simplicity is the ultimate sophistication." — Leonardo da Vinci
-The unavoidable price of reliability is simplicity." — C.A.R. Hoare
-You can't trust code that you did not totally create yourself." — Ken Thompson
-Compatibility means deliberately repeating other people's mistakes." — David Wheeler
-Debugging time increases as a square of the program's size." — Chris Wenham
-Before software can be reusable it first has to be usable. - Unknown
-The best code is no code at all." - Unknown
-No code is faster than no code."  — merb motto
-Program testing can be a very effective way to show the presence of bugs, but is hopelessly inadequate for showing their absence."  — Edsger W. Dijkstra
-Parkinson's Law  "Work expands so as to fill the time available for its completion."
-Code never lies, comments sometimes do." — Ron Jeffries
-If we'd asked the customers what they wanted, they would have said "faster horses" — Henry Ford
-With diligence it is possible to make anything run slowly." - Tom Duff
-Software obeys the law of gaseous expansion – it continues to grow until memory is completely filled." — Larry Gleason
-A distributed system is one in which the failure of a computer you didn't even know existed can render your own computer unusable." — Leslie Lamport
-The proper use of comments is to compensate for our failure to express ourself in code." - Robert C. MartinClean Code
-Incorrect documentation is often worse than no documentation." - Bertrand Meyer
-Security is a state of mind." - NSA Security Manua
-And don't EVER make the mistake that you can design something better than what you get from ruthless massively parallel trial-and-error with a feedback cycle. That's giving your intelligence much too much credit." - Linus Torvalds
+"One of my most productive days was throwing away 1000 lines of code  — Ken Thompson
+"When in doubt, use brute force." - Ken Thompson
+"Deleted code is debugged code." - Jeff Sickel
+"Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." - Brian W. Kernighan and P. J. Plauger in The Elements of Programming Style.
+"The most effective debugging tool is still careful thought, coupled with judiciously placed print statements." - Brian W. Kernighan, in the paper Unix for Beginners (1979)
+"Controlling complexity is the essence of computer programming." - Brian Kernighan
+"Beauty is more important in computing than anywhere else in technology because software is so complicated. Beauty is the ultimate defence against complexity." - David Gelernter
+"UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things." - Doug Gwyn
+"Life is too short to run proprietary software." - Bdale Garbee
+"The central enemy of reliability is complexity." - Geer et al.
+"Simplicity is prerequisite for reliability." - Edsger W. Dijkstra
+"Simplicity is the ultimate sophistication." — Leonardo da Vinci
+"The unavoidable price of reliability is simplicity." — C.A.R. Hoare
+"You can't trust code that you did not totally create yourself." — Ken Thompson
+"Compatibility means deliberately repeating other people's mistakes." — David Wheeler
+"Debugging time increases as a square of the program's size." — Chris Wenham
+"Before software can be reusable it first has to be usable. - Unknown
+"The best code is no code at all." - Unknown
+"No code is faster than no code."  — merb motto
+"Program testing can be a very effective way to show the presence of bugs, but is hopelessly inadequate for showing their absence."  — Edsger W. Dijkstra
+"Parkinson's Law  "Work expands so as to fill the time available for its completion."
+"Code never lies, comments sometimes do." — Ron Jeffries
+"If we'd asked the customers what they wanted, they would have said "faster horses" — Henry Ford
+"With diligence it is possible to make anything run slowly." - Tom Duff
+"Software obeys the law of gaseous expansion – it continues to grow until memory is completely filled." — Larry Gleason
+"A distributed system is one in which the failure of a computer you didn't even know existed can render your own computer unusable." — Leslie Lamport
+"The proper use of comments is to compensate for our failure to express ourself in code." - Robert C. MartinClean Code
+"Incorrect documentation is often worse than no documentation." - Bertrand Meyer
+"Security is a state of mind." - NSA Security Manua
+"And don't EVER make the mistake that you can design something better than what you get from ruthless massively parallel trial-and-error with a feedback cycle. That's giving your intelligence much too much credit." - Linus Torvalds

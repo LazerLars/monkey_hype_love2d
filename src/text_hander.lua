@@ -1,23 +1,27 @@
 local text_handler = {
-    test = "123"
 }
 
 
-text_handler.base_path = "data/texts/words/"
+text_handler.base_path = "data/texts/"
 
 text_handler.text_file_names = {
-    common_eng_words =  text_handler.base_path .. "common_eng_words.txt",
-    teen_slang = text_handler.base_path .. "teen_slang.txt",
-    weird_slang = text_handler.base_path .. "weird_swear_words.txt",
-    wiki_swear_words = text_handler.base_path .. "wiki_swear_words.txt"
+    common_eng_words =  text_handler.base_path .. "words/common_eng_words.txt",
+    teen_slang = text_handler.base_path .. "words/teen_slang.txt",
+    weird_slang = text_handler.base_path .. "words/weird_swear_words.txt",
+    wiki_swear_words = text_handler.base_path .. "words/wiki_swear_words.txt",
+    programming_quotes_00 = text_handler.base_path .. "quotes/programming_quotes_00.txt"
 }
 
 text_handler.words_list = {}
 
+text_handler.quotes_list = {}
+
+-- used to read individual words in the data/words folder
 function text_handler.read_text_file_to_table()
     -- Open the file in read mode
    local file, err = io.open(text_handler.text_file_names.wiki_swear_words, "r")
    local file, err = io.open(text_handler.text_file_names.common_eng_words, "r")
+   local file, err = io.open(text_handler.text_file_names.programming_quotes_00, "r")
 
    -- Check for errors
    if not file then
