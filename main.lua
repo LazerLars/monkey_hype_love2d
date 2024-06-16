@@ -80,7 +80,16 @@ function love.load()
         for index, value in pairs(text_handler.text_file_names.quotes) do
             print(value)
             text_handler.read_text_file_to_table(value)
+            -- text_handler.shuffle_words_list()
             text_handler.split_quote_and_author()
+            local temp_table = text_handler.quotes_list
+            -- temp_table = text_handler.table_shuffle_super_advanced(temp_table)
+    
+            
+            for key, value in pairs(temp_table) do
+
+                print(value.quote .. " - " .. value.author )
+            end
         end
     elseif game_state == game_states.words then
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)

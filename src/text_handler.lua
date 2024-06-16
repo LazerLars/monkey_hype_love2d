@@ -37,8 +37,9 @@ function text_handler.read_text_file_to_table(file_name)
         table.insert(text_handler.words_list, line)
     end
 
-   file:close()
-   text_handler.print_out_words_list_quotes()
+    file:close()
+--    text_handler.print_out_words_list_quotes()
+    text_handler.shuffle_words_list()
 end
 
 function text_handler.print_out_words_list_raw()
@@ -85,6 +86,45 @@ function text_handler.split_quote_and_author()
             print("quote: " .. quote) -- prints the extracted quote without the double quotes 
         end
     end
+end
+
+--shuffle table
+-- Fisher-Yates shuffle function
+function text_handler.table_shuffle_fisher_yates(table)
+    local len = #table
+    for i = len, 2, -1 do
+        math.randomseed(os.time())  -- Seed the random number generator with the current time
+        local j = math.random(i)
+        table[i], table[j] = table[j], table[i]
+    end
+    return table
+end
+
+-- Advanced Fisher-Yates shuffle function
+function text_handler.table_shuffle_advanced(table)
+    local len = #table
+    local passes = 3  -- Adjust the number of passes as needed
+
+    for pass = 1, passes do
+        for i = len, 2, -1 do
+            local j = math.random(i)
+            table[i], table[j] = table[j], table[i]
+        end
+    end
+
+    return table
+end
+
+function text_handler.table_shuffle_super_advanced(table)
+    local temp_table = table
+    temp_table = text_handler.table_shuffle_fisher_yates(table)
+    temp_table = text_handler.table_shuffle_advanced(table)
+
+    return table
+end
+
+function text_handler.shuffle_words_list()
+    text_handler.words_list = text_handler.table_shuffle_super_advanced(text_handler.words_list)
 end
 
 
