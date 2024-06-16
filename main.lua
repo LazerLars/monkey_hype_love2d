@@ -4,12 +4,13 @@ end
 
 
 local utf8 = require("utf8")
-local text_handler = require "src.text_hander"
+local text_handler = require "src.text_handler"
 
 
 local text_buffer_list = {
     textInput = ""
 }
+
 
 
 
@@ -45,6 +46,12 @@ local settings = {
         b = 127
     }
 }
+
+game_states = {
+    words = 0,
+    quotes_programmer = 1
+}
+game_state = 1
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -68,7 +75,31 @@ function love.load()
     
     love.graphics.setFont(font)
     love.graphics.setDefaultFilter("nearest", "nearest")
-    text_handler.read_text_file_to_table()
+    if game_state == game_states.quotes_programmer then
+        -- read all words into the words list
+        for index, value in pairs(text_handler.text_file_names.quotes) do
+            print(value)
+            text_handler.read_text_file_to_table(value)
+            -- text_handler.shuffle_words_list()
+            text_handler.split_quote_and_author()
+            local temp_table = text_handler.quotes_list
+            -- temp_table = text_handler.table_shuffle_super_advanced(temp_table)
+    
+            
+            for key, value in pairs(temp_table) do
+
+                print(value.quote .. " - " .. value.author )
+            end
+        end
+    elseif game_state == game_states.words then
+        -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
+        for index, value in pairs(text_handler.text_file_names.words) do
+            print(value)
+            text_handler.read_text_file_to_table(value)
+        end 
+    end
+    print(#text_handler.quotes_list)
+    print("...")
 
 end
 
