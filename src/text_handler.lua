@@ -1,7 +1,6 @@
 local text_handler = {
 }
 
-
 text_handler.base_path = "data/texts/"
 
 text_handler.text_file_names = {
@@ -33,45 +32,25 @@ function text_handler.read_text_file_to_table(file_name)
    if not file then
        error("Error opening file: " .. err)
    end
-
-   -- Read lines and insert them into the table
    -- read individual words and insert into the words list
-  
     for line in file:lines() do
         table.insert(text_handler.words_list, line)
     end
 
-
-   -- Close the file
    file:close()
    text_handler.print_out_words_list_quotes()
 end
 
 function text_handler.print_out_words_list_raw()
-    -- Print the lines to the console (for verification)
     for i, line in ipairs(text_handler.words_list) do
         -- prints every line
             print("Line " .. i .. ": " .. line) -- prints entire line
-        
-            -- Extract quote between double quotes etc. "some qoute "
-            local quote = line:match('"([^"]+)"')
-            if quote then
-                print("quote: " .. quote) -- prints the extracted quote without the double quotes
-            end
-
-            -- Extract author after "some qoute" - author name...  etc. + context
-            local author = line:match('Author:%s*(.-)$')
-            if author then
-                print("author:" .. author) -- prints the extracted author
-            end
-            -- end for  loop
         end
 end
 
 function text_handler.print_out_words_list_quotes()
     -- Print the lines to the console (for verification)
     for i, line in ipairs(text_handler.words_list) do
-        
             -- Extract quote between double quotes etc. "some qoute "
             local quote = line:match('"([^"]+)"')
             -- Extract author after "some qoute" - author name...  etc. + context
@@ -79,12 +58,8 @@ function text_handler.print_out_words_list_quotes()
             if quote and author then
                 print(quote .. " - " .. author) -- prints the extracted quote without the double quotes
             elseif quote and not author then
-                print("quote: " .. quote) -- prints the extracted quote without the double quotes
-                
+                print("quote: " .. quote) -- prints the extracted quote without the double quotes 
             end
-
-            
-            
         end
 end
 
