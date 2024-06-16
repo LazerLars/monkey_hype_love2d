@@ -63,4 +63,29 @@ function text_handler.print_out_words_list_quotes()
         end
 end
 
+function text_handler.split_quote_and_author()
+    for i, line in ipairs(text_handler.words_list) do
+        -- Extract quote between double quotes etc. "some qoute "
+        local quote = line:match('"([^"]+)"')
+        -- Extract author after "some qoute" - author name...  etc. + context
+        local author = line:match('Author:%s*(.-)$')
+        if quote and author then
+            local new_element = {
+                quote = quote,
+                author = author
+             }
+            table.insert(text_handler.quotes_list, new_element)
+            print(quote .. " - " .. author) -- prints the extracted quote without the double quotes
+        elseif quote and not author then
+            local new_element = {
+                quote = quote,
+                author = "Unknown"
+             }
+            table.insert(text_handler.quotes_list, new_element)
+            print("quote: " .. quote) -- prints the extracted quote without the double quotes 
+        end
+    end
+end
+
+
 return text_handler

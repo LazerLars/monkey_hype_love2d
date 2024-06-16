@@ -88,6 +88,7 @@ function love.load()
             text_handler.read_text_file_to_table(value)
         end 
     end
+    text_handler.split_quote_and_author()
     print(#text_handler.words_list)
     print("...")
 
