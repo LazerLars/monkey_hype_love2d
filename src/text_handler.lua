@@ -181,18 +181,25 @@ function text_handler.calculate_current_qoute_on_screen_settings()
     -- check if myString char pos 36 is a space or a letter
     local numb_of_lines = 1
     if text_handler.text_boss.text_length > 36 then
-        local list = {}
+        local qoute_as_char_table = {}
+        -- add entire qoute to a list
         for p, c in utf8.codes(current_quote) do
             local char = utf8.char(c)
-            table.insert(list, char)
+            table.insert(qoute_as_char_table, char)
             -- print(char)
         end
-        print(list[1])
-        if list[3] == " " then
-            print('we have a space')
-        else
-            print('we have a letter')
-            print(list[3])
+        local start_pos = 1
+        local char_at_pos = qoute_as_char_table[36]
+        if char_at_pos == " " then
+            print('split the line at this pos')
+        else 
+            -- we need to find the nearest " "
+            for i = 36, 1, -1 do
+                if qoute_as_char_table[i] == " " then
+                    print('we found nearest space at pos ' .. i)
+                end
+
+            end
         end
 
         local char = string.sub(current_quote, 36,36)
