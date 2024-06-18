@@ -175,32 +175,56 @@ end
 function text_handler.calculate_current_qoute_on_screen_settings()
     -- local len_of_text = #text_handler.text_boss.current_qoute_settings.qoute
     local current_quote = text_handler.text_boss.quote
-    local current_quote = "hej med dig jeg hedder johnny mortensen"
+    local current_quote = "hej med dig jeg hedder johnny mortensen hvor mange gange kan du sjippe over en sigøjner"
     -- current_quote = "kjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkj kkk"
     local specs = {}
     -- check if myString char pos 36 is a space or a letter
-    local numb_of_lines = 1
     if text_handler.text_boss.text_length > 36 then
         local qoute_as_char_table = {}
-        -- add entire qoute to a list
+        -- add entire qoute to a list as indivual chars
         for p, c in utf8.codes(current_quote) do
             local char = utf8.char(c)
             table.insert(qoute_as_char_table, char)
             -- print(char)
         end
+        
+        local numb_of_lines = 1
         local start_pos = 1
-        local char_at_pos = qoute_as_char_table[36]
-        if char_at_pos == " " then
-            print('split the line at this pos')
-        else 
-            -- we need to find the nearest " "
-            for i = 36, 1, -1 do
-                if qoute_as_char_table[i] == " " then
-                    print('we found nearest space at pos ' .. i)
+        local last_pos = #qoute_as_char_table
+        local ideal_numb_of_lines = last_pos/screen_rules.max_chars_per_line
+        local max_chars_per_page = screen_rules.max_chars_per_line
+        local char_at_pos = qoute_as_char_table[max_chars_per_page]
+        local currentPos = 1
+        if currentPos < last_pos then
+            -- selecet the start pos
+            local next_pos = max_chars_per_page
+            -- run the number of ideal lines + 2 then we are sure we have everything covered
+            for i = 1, ideal_numb_of_lines+2, 1 do
+                -- get the char as pos nth
+                char_at_pos = qoute_as_char_table[next_pos]
+                -- if if find a space, we can safely break to the next line
+                if char_at_pos == " " then
+                    print('split the line at this pos')
+                    table.insert(specs, {startPos = 1, endPos = i})
+                    -- this might need to be i + 1
+                    currentPos = i
+                    next_pos = next_pos + max_chars_per_page
+                else 
+                    -- we need to find the nearest " "
+                    for i = next_pos, 1, -1 do
+                        if qoute_as_char_table[i] == " " then
+                            print('we found nearest space at pos ' .. i)
+                            table.insert(specs, {startPos = start_pos, endPos = i})
+                            start_pos = i
+                            currentPos = i
+                            next_pos = i + max_chars_per_page
+                            break
+                        end
+                    end
                 end
-
             end
         end
+       
 
         local char = string.sub(current_quote, 36,36)
         if char ~= " " then
