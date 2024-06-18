@@ -77,24 +77,10 @@ function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
     if game_state == game_states.quotes_programmer then
         -- read all words into the words list
-        for index, value in pairs(text_handler.text_file_names.quotes) do
-            print(value)
-            text_handler.read_text_file_to_table(value)
-            text_handler.split_quote_and_author()
-            local temp_table = text_handler.quotes_list
-            -- temp_table = text_handler.table_shuffle_super_advanced(temp_table)
-    
-            for key, value in pairs(temp_table) do
-
-                print(value.quote .. " - " .. value.author )
-            end
-        end
+        text_handler.mode_programmer_qoutes()
     elseif game_state == game_states.words then
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
-        for index, value in pairs(text_handler.text_file_names.words) do
-            print(value)
-            text_handler.read_text_file_to_table(value)
-        end 
+        text_handler.mode_single_words_mode()
     end
     print(#text_handler.quotes_list)
     print("...")

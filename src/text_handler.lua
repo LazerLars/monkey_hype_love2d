@@ -127,5 +127,29 @@ function text_handler.shuffle_words_list()
     text_handler.words_list = text_handler.table_shuffle_super_advanced(text_handler.words_list)
 end
 
+function text_handler.mode_programmer_qoutes()
+    for index, value in pairs(text_handler.text_file_names.quotes) do
+        print(value)
+        text_handler.read_text_file_to_table(value)
+        text_handler.split_quote_and_author()
+        local temp_table = text_handler.quotes_list
+        -- temp_table = text_handler.table_shuffle_super_advanced(temp_table)
+
+        for key, value in pairs(temp_table) do
+
+            print(value.quote .. " - " .. value.author )
+        end
+    end
+end
+
+function text_handler.mode_single_words_mode()
+    for index, value in pairs(text_handler.text_file_names.words) do
+        print(value)
+        text_handler.read_text_file_to_table(value)
+    end 
+    
+end
+
+
 
 return text_handler
