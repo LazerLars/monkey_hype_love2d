@@ -1,3 +1,5 @@
+local utf8 = require("utf8")
+
 local text_handler = {
 }
 
@@ -172,8 +174,41 @@ end
 
 function text_handler.calculate_current_qoute_on_screen_settings()
     -- local len_of_text = #text_handler.text_boss.current_qoute_settings.qoute
-    print(text_handler.text_boss.text_length)
-    print("..")
+    local current_quote = text_handler.text_boss.quote
+    local current_quote = "hej med dig jeg hedder johnny mortensen"
+    -- current_quote = "kjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkj kkk"
+    local specs = {}
+    -- check if myString char pos 36 is a space or a letter
+    local numb_of_lines = 1
+    if text_handler.text_boss.text_length > 36 then
+        local list = {}
+        for p, c in utf8.codes(current_quote) do
+            local char = utf8.char(c)
+            table.insert(list, char)
+            -- print(char)
+        end
+        print(list[1])
+        if list[3] == " " then
+            print('we have a space')
+        else
+            print('we have a letter')
+            print(list[3])
+        end
+
+        local char = string.sub(current_quote, 36,36)
+        if char ~= " " then
+            print('we have a char')
+            print(char)
+            -- loop backwards until you find the first space
+            print(#list)
+            print(#list)
+            -- find what pos the nearest space is on
+        elseif char == " " then
+            print('we have a space')
+        end
+    end
+
+
 end
 
 
