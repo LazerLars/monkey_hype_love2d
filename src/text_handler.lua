@@ -20,11 +20,11 @@ text_handler.words_list = {}
 text_handler.quotes_list = {}
 
 text_handler.text_boss = {
-    current_word = {
         qoute_select_index = 1,
-        numb_of_lines_on_screen = 0
-
-    }
+        numb_of_lines_on_screen = 0,
+        quote = '',
+        author = '',
+        text_length = 0
 }
 
 
@@ -159,13 +159,21 @@ function text_handler.mode_single_words_mode()
 end
 
 function text_handler.select_next_qoute()
-    local current_qoute = text_handler.quotes_list[text_handler.text_boss.current_word.qoute_select_index]
-    text_handler.text_boss.current_word.qoute_select_index = text_handler.text_boss.current_word.qoute_select_index + 1
+
+    local current_qoute = text_handler.quotes_list[text_handler.text_boss.qoute_select_index]
+    
+    text_handler.text_boss.quote = current_qoute['quote']
+    text_handler.text_boss.author = current_qoute['author']
+    text_handler.text_boss.text_length = #current_qoute['quote']
+    text_handler.text_boss.qoute_select_index = text_handler.text_boss.qoute_select_index + 1
+    text_handler.calculate_current_qoute_on_screen_settings()
     return current_qoute
 end
 
-function text_handler.calculate_qoute_on_screen_settings()
-
+function text_handler.calculate_current_qoute_on_screen_settings()
+    -- local len_of_text = #text_handler.text_boss.current_qoute_settings.qoute
+    print(text_handler.text_boss.text_length)
+    print("..")
 end
 
 
