@@ -19,6 +19,15 @@ text_handler.words_list = {}
 
 text_handler.quotes_list = {}
 
+text_handler.text_boss = {
+    current_word = {
+        qoute_select_index = 1,
+        numb_of_lines_on_screen = 0
+
+    }
+}
+
+
 -- used to read individual words in the data/words folder
 function text_handler.read_text_file_to_table(file_name)
     -- if we don't have the words args
@@ -147,8 +156,18 @@ function text_handler.mode_single_words_mode()
         print(value)
         text_handler.read_text_file_to_table(value)
     end 
-    
 end
+
+function text_handler.select_next_qoute()
+    local current_qoute = text_handler.quotes_list[text_handler.text_boss.current_word.qoute_select_index]
+    text_handler.text_boss.current_word.qoute_select_index = text_handler.text_boss.current_word.qoute_select_index + 1
+    return current_qoute
+end
+
+function text_handler.calculate_qoute_on_screen_settings()
+
+end
+
 
 
 

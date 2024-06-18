@@ -12,8 +12,6 @@ local text_buffer_list = {
 }
 
 
-
-
     -- recommended screen sizes
 ---+--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 -- | scale factor | desktop res | 1    | 2   | 3   | 4   | 5   | 6   | 8   | 10  |
@@ -52,6 +50,12 @@ game_states = {
     quotes_programmer = 1
 }
 game_state = 1
+
+screen_rules = {
+    max_allowed_lines = 16,
+    max_chars_per_line = 36
+}
+
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -78,6 +82,11 @@ function love.load()
     if game_state == game_states.quotes_programmer then
         -- read all words into the words list
         text_handler.mode_programmer_qoutes()
+        local qoute = text_handler.select_next_qoute()
+        print('..............')
+        print(qoute['quote'])
+        print(qoute['author'])
+        print('..............')
     elseif game_state == game_states.words then
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
         text_handler.mode_single_words_mode()
@@ -175,6 +184,13 @@ function love.keypressed(key)
         if byteoffset then
             text_buffer_list.textInput = string.sub(text_buffer_list.textInput, 1, byteoffset - 1)
         end
+    end
+    if key == 'escape' then
+        local qoute = text_handler.select_next_qoute()
+        print('..............')
+        print(qoute['quote'])
+        print(qoute['author'])
+        print('..............')
     end
 end
 
