@@ -231,8 +231,6 @@ function text_handler.calculate_current_qoute_on_screen_settings()
             print('we have a char')
             print(char)
             -- loop backwards until you find the first space
-            print(#list)
-            print(#list)
             -- find what pos the nearest space is on
         elseif char == " " then
             print('we have a space')
