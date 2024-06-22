@@ -176,16 +176,18 @@ function text_handler.calculate_current_qoute_on_screen_settings()
     -- local len_of_text = #text_handler.text_boss.current_qoute_settings.qoute
     local current_quote = text_handler.text_boss.quote
     local current_quote = "hej med dig jeg hedder johnny mortensen hvor mange gange kan du sjippe over en sigøjner"
-    local current_quote = "A programmer is a person who passes as an exacting expert on the basis of being able to turn out, after innumerable punching, an infinite series of incomprehensive answers calculated with micrometric precisions from vague assumptions based on debatable figures taken from inconclusive documents and carried out on instruments of problematical accuracy by persons of dubious reliability and questionable mentality for the avowed purpose of annoying and confounding a hopelessly defenseless department that was unfortunate enough to ask for the information in the first place."
+    -- local current_quote = "A programmer is a person who passes as an exacting expert on the basis of being able to turn out, after innumerable punching, an infinite series of incomprehensive answers calculated with micrometric precisions from vague assumptions based on debatable figures taken from inconclusive documents and carried out on instruments of problematical accuracy by persons of dubious reliability and questionable mentality for the avowed purpose of annoying and confounding a hopelessly defenseless department that was unfortunate enough to ask for the information in the first place."
     -- current_quote = "kjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkj kkk"
+    local textAsCharTable = {}
+    local linesTable = {}
     if text_handler.text_boss.text_length > 36 then
-        local textAsCharTable = {}
         -- add entire qoute to a list as indivual chars
-        for p, c in utf8.codes(current_quote) do
-            local char = utf8.char(c)
-            table.insert(textAsCharTable, char)
-            -- print(char)
-        end
+        -- for p, c in utf8.codes(current_quote) do
+        --     local char = utf8.char(c)
+        --     table.insert(textAsCharTable, char)
+        --     -- print(char)
+        -- end
+        textAsCharTable = text_handler.split_string_into_char_table(current_quote)
 
         local keepLineSplitting = true
 
@@ -193,7 +195,6 @@ function text_handler.calculate_current_qoute_on_screen_settings()
         local nextEndPos =  screen_rules.max_chars_per_line
         local maxCharsPerLine = screen_rules.max_chars_per_line
         local textLen = #current_quote
-        local linesTable = {}
         while keepLineSplitting do
             if textAsCharTable[nextEndPos] == " " then
                 table.insert(linesTable, {lineStart = currentPos, lineEnd = nextEndPos})
@@ -223,10 +224,24 @@ function text_handler.calculate_current_qoute_on_screen_settings()
                 end
             end
         end
+    else
+        table.insert(linesTable, {lineStart = 1, lineEnd = #current_quote})
     end
 
 
 end
+
+-- splits a text into a char arrary, we do this because string.sub cannot return nordic letter æ ø å apparently :) 
+function text_handler.split_string_into_char_table(text)
+    local charTable = {}
+    for p, c in utf8.codes(text) do
+        local char = utf8.char(c)
+        table.insert(charTable, char)
+        -- print(char)
+    end
+    return charTable
+end
+
 
 
 
