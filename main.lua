@@ -92,9 +92,6 @@ function love.load()
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
         text_handler.mode_single_words_mode()
     end
-    print(#text_handler.quotes_list)
-    print("...")
-
 end
 
 
