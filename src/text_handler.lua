@@ -166,7 +166,13 @@ end
 function text_handler.select_next_qoute()
     local keepGoing = true
     while keepGoing do
+        -- if the index exceeds the number of qoutes we have, then we want to shuffle
+        if text_handler.text_boss.qoute_select_index > #text_handler.quotes_list then
+            -- then we start over agin
+            text_handler.text_boss.qoute_select_index = 1
+        end
         local current_qoute = text_handler.quotes_list[text_handler.text_boss.qoute_select_index]
+        
         -- local current_qoute = text_handler.words_list[text_handler.text_boss.qoute_select_index]
         -- local current_qoute = {quote = "You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new. programmer is a person who passes as an exacting expert on the basis of being able to turn out, after innumerable punching, an infinite series of incomprehensive answers calculated with micrometric precisions from vague assumptions based on debatable figures taken from inconclusive documents and carried out on instruments of problematical accuracy by persons of dubious reliability and questionable mentality for the avowed purpose of annoying and confounding a hopelessly defenseless department that was unfortunate enough to ask for the information in the first place. You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new.", author = "Unknown"}
         text_handler.text_boss.quote = current_qoute['quote']
