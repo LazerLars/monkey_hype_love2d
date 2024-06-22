@@ -176,6 +176,8 @@ function text_handler.calculate_current_qoute_on_screen_settings()
     -- local len_of_text = #text_handler.text_boss.current_qoute_settings.qoute
     local current_quote = text_handler.text_boss.quote
     local current_quote = "hej med dig jeg hedder johnny mortensen hvor mange gange kan du sjippe over en sigøjner"
+    local current_quote = "You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new."
+
     -- local current_quote = "A programmer is a person who passes as an exacting expert on the basis of being able to turn out, after innumerable punching, an infinite series of incomprehensive answers calculated with micrometric precisions from vague assumptions based on debatable figures taken from inconclusive documents and carried out on instruments of problematical accuracy by persons of dubious reliability and questionable mentality for the avowed purpose of annoying and confounding a hopelessly defenseless department that was unfortunate enough to ask for the information in the first place."
     -- current_quote = "kjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkj kkk"
     local textAsCharTable = {}
@@ -196,30 +198,42 @@ function text_handler.calculate_current_qoute_on_screen_settings()
         local maxCharsPerLine = screen_rules.max_chars_per_line
         local textLen = #current_quote
         while keepLineSplitting do
+            -- check if we found a space
             if textAsCharTable[nextEndPos] == " " then
+                -- insert lineStart and lineEnd for current line
                 table.insert(linesTable, {lineStart = currentPos, lineEnd = nextEndPos})
                 -- settings startPos for next line
                 currentPos = 1 + maxCharsPerLine
                 nextEndPos = currentPos + maxCharsPerLine
+                -- if our next pos is greather than the length of the text we know we reached the end
                 if nextEndPos > textLen then
+                    --set the line end to the length of the text
                     table.insert(linesTable, {lineStart = currentPos, lineEnd = textLen})
+                    -- break out of while loop
                     keepLineSplitting = false
                 end
             else
+                -- find didnt fine a space on the ideal line end, then start the serach for the cloased space
                 -- find closest space " "
                 for i = nextEndPos, currentPos, -1 do
+                    -- if we find a space at pos i, we know we dont need to loop anymore
                     if textAsCharTable[i] == " " then
                         print('we found closest space at pos: ' .. i)
                         local newSpacePos = i
+                        --insert line settings into the table
                         table.insert(linesTable, {lineStart = currentPos, lineEnd = newSpacePos})
                         -- settings for next line
                         currentPos = 1 + newSpacePos
                         nextEndPos = currentPos + maxCharsPerLine
+                        -- break out of the for loop
                         break;
                     end
                 end
+                -- if the nextNedPos is greater than our textlength we know we are done finding line settings, and we can break out of the while loop
                 if nextEndPos > textLen then
+                    -- inset settings for the last line
                     table.insert(linesTable, {lineStart = currentPos, lineEnd = textLen})
+                    -- break out of for loop
                     keepLineSplitting = false
                 end
             end
