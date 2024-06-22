@@ -82,11 +82,12 @@ function love.load()
     if game_state == game_states.quotes_programmer then
         -- read all words into the words list
         text_handler.mode_programmer_qoutes()
-        local qoute = text_handler.select_next_qoute()
-        print('..............')
-        print(qoute['quote'])
-        print(qoute['author'])
-        print('..............')
+        print('------------------------------')
+        print('------------------------------')
+        print('CURRENT QUOTE:')
+        print(text_handler.text_boss.quote)
+        print('------------------------------')
+        print('------------------------------')
     elseif game_state == game_states.words then
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
         text_handler.mode_single_words_mode()
@@ -186,11 +187,13 @@ function love.keypressed(key)
         end
     end
     if key == 'escape' then
-        local qoute = text_handler.select_next_qoute()
-        print('..............')
-        print(qoute['quote'])
-        print(qoute['author'])
-        print('..............')
+        text_handler.select_next_qoute()
+        print('------------------------------')
+        print('------------------------------')
+        print('CURRENT QUOTE:')
+        print(text_handler.text_boss.quote)
+        print('------------------------------')
+        print('------------------------------')
     end
 end
 

@@ -23,10 +23,12 @@ text_handler.quotes_list = {}
 
 text_handler.text_boss = {
         qoute_select_index = 1,
-        numb_of_lines_on_screen = 0,
+        numbOfLinesForText = 0,
         quote = '',
         author = '',
-        text_length = 0
+        text_length = 0,
+        linesTable = {},
+        textAsCharTable = {}
 }
 
 
@@ -143,13 +145,14 @@ function text_handler.mode_programmer_qoutes()
         print(value)
         text_handler.read_text_file_to_table(value)
         text_handler.split_quote_and_author()
+        text_handler.select_next_qoute()
         local temp_table = text_handler.quotes_list
         -- temp_table = text_handler.table_shuffle_super_advanced(temp_table)
 
-        for key, value in pairs(temp_table) do
+        -- for key, value in pairs(temp_table) do
 
-            print(value.quote .. " - " .. value.author )
-        end
+        --     print(value.quote .. " - " .. value.author )
+        -- end
     end
 end
 
@@ -161,27 +164,33 @@ function text_handler.mode_single_words_mode()
 end
 
 function text_handler.select_next_qoute()
-
-    local current_qoute = text_handler.quotes_list[text_handler.text_boss.qoute_select_index]
-    
-    text_handler.text_boss.quote = current_qoute['quote']
-    text_handler.text_boss.author = current_qoute['author']
-    text_handler.text_boss.text_length = #current_qoute['quote']
-    text_handler.text_boss.qoute_select_index = text_handler.text_boss.qoute_select_index + 1
-    text_handler.calculate_current_qoute_on_screen_settings()
-    return current_qoute
+    local keepGoing = true
+    while keepGoing do
+        local current_qoute = text_handler.quotes_list[text_handler.text_boss.qoute_select_index]
+        -- local current_qoute = text_handler.words_list[text_handler.text_boss.qoute_select_index]
+        -- local current_qoute = {quote = "You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new. programmer is a person who passes as an exacting expert on the basis of being able to turn out, after innumerable punching, an infinite series of incomprehensive answers calculated with micrometric precisions from vague assumptions based on debatable figures taken from inconclusive documents and carried out on instruments of problematical accuracy by persons of dubious reliability and questionable mentality for the avowed purpose of annoying and confounding a hopelessly defenseless department that was unfortunate enough to ask for the information in the first place. You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new.", author = "Unknown"}
+        text_handler.text_boss.quote = current_qoute['quote']
+        text_handler.text_boss.author = current_qoute['author']
+        text_handler.text_boss.text_length = #current_qoute['quote']
+        text_handler.text_boss.qoute_select_index = text_handler.text_boss.qoute_select_index + 1
+        text_handler.calculate_current_qoute_on_screen_settings()
+        -- we want to keep finding a qoute if we exceed 16 lines
+        if text_handler.text_boss.numbOfLinesForText <= 16 then
+            keepGoing = false
+        end
+    end
 end
 
 function text_handler.calculate_current_qoute_on_screen_settings()
     -- local len_of_text = #text_handler.text_boss.current_qoute_settings.qoute
     local current_quote = text_handler.text_boss.quote
-    local current_quote = "hej med dig jeg hedder johnny mortensen hvor mange gange kan du sjippe over en sigøjner"
-    local current_quote = "You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new."
+    -- local current_quote = "hej med dig jeg hedder johnny mortensen hvor mange gange kan du sjippe over en sigøjner"
+    -- local current_quote = "You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new."
 
     -- local current_quote = "A programmer is a person who passes as an exacting expert on the basis of being able to turn out, after innumerable punching, an infinite series of incomprehensive answers calculated with micrometric precisions from vague assumptions based on debatable figures taken from inconclusive documents and carried out on instruments of problematical accuracy by persons of dubious reliability and questionable mentality for the avowed purpose of annoying and confounding a hopelessly defenseless department that was unfortunate enough to ask for the information in the first place."
     -- current_quote = "kjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkj kkk"
-    local textAsCharTable = {}
     local linesTable = {}
+    local textAsCharTable = text_handler.split_string_into_char_table(current_quote)
     if text_handler.text_boss.text_length > 36 then
         -- add entire qoute to a list as indivual chars
         -- for p, c in utf8.codes(current_quote) do
@@ -189,7 +198,6 @@ function text_handler.calculate_current_qoute_on_screen_settings()
         --     table.insert(textAsCharTable, char)
         --     -- print(char)
         -- end
-        textAsCharTable = text_handler.split_string_into_char_table(current_quote)
 
         local keepLineSplitting = true
 
@@ -198,12 +206,18 @@ function text_handler.calculate_current_qoute_on_screen_settings()
         local maxCharsPerLine = screen_rules.max_chars_per_line
         local textLen = #current_quote
         while keepLineSplitting do
+            if #linesTable > 16 then
+                keepLineSplitting = false
+                break;
+            end
             -- check if we found a space
             if textAsCharTable[nextEndPos] == " " then
                 -- insert lineStart and lineEnd for current line
                 table.insert(linesTable, {lineStart = currentPos, lineEnd = nextEndPos})
                 -- settings startPos for next line
-                currentPos = 1 + maxCharsPerLine
+                -- currentPos = 1 + maxCharsPerLine
+                -- nextEndPos = currentPos + maxCharsPerLine
+                currentPos = 1 + nextEndPos
                 nextEndPos = currentPos + maxCharsPerLine
                 -- if our next pos is greather than the length of the text we know we reached the end
                 if nextEndPos > textLen then
@@ -241,8 +255,11 @@ function text_handler.calculate_current_qoute_on_screen_settings()
     else
         table.insert(linesTable, {lineStart = 1, lineEnd = #current_quote})
     end
-
-
+    text_handler.text_boss.linesTable = linesTable
+    text_handler.text_boss.textAsCharTable = textAsCharTable
+    text_handler.text_boss.numbOfLinesForText = #linesTable
+    
+    return linesTable
 end
 
 -- splits a text into a char arrary, we do this because string.sub cannot return nordic letter æ ø å apparently :) 
