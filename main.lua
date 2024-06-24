@@ -117,6 +117,7 @@ function love.draw()
     -- love.graphics.print("Creativity is thinking up new things.", x, y)
     for key, value in ipairs(text_handler.text_boss.linesTable) do
         -- print(value['lineStart'])
+        love.graphics.print(key, x-20, y)
         local currentLine = string.sub(currentText, value.lineStart, value.lineEnd)
         -- print(currentLine)
         love.graphics.print(currentLine, x, y)
@@ -124,6 +125,10 @@ function love.draw()
         -- print(value.lineStart)
         -- print(value.lineEnd)
     end
+    love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
+    love.graphics.print(text_buffer_list.textInput, 20,20)
+
+    
     -- ---------------------------------
     
     -- test_lines_on_screen()
@@ -135,11 +140,11 @@ function love.draw()
     -- max 16 lines
     -- first line start at x = 20
     -- draw text to write
-    love.graphics.print("Somewhere over the rainbow ^^", 32, settings.height/2)
+    -- love.graphics.print("Somewhere over the rainbow ^^", 32, settings.height/2)
     
     --draw user text inptu
-    love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
-    love.graphics.print(text_buffer_list.textInput, 32, settings.height/2)
+    
+    -- love.graphics.print(text_buffer_list.textInput, 32, settings.height/2)
 
     -- love.graphics.print("AA", 612, settings.height/2)
     -- love.graphics.print("AA", 1, settings.height/2)
