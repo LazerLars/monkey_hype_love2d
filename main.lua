@@ -219,6 +219,7 @@ function love.keypressed(key)
     end
     if key == 'escape' then
         text_handler.select_next_qoute()
+        text_buffer_list.textInput = ""
         print('------------------------------')
         print('------------------------------')
         print('CURRENT QUOTE:')
