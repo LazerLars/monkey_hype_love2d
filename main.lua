@@ -113,6 +113,7 @@ function love.draw()
 
     local x = 20
     local y = 20 
+    local lineIncrement = 20
     local currentText = text_handler.text_boss.quote
     -- love.graphics.print("Creativity is thinking up new things.", x, y)
     for key, value in ipairs(text_handler.text_boss.linesTable) do
@@ -121,12 +122,27 @@ function love.draw()
         local currentLine = string.sub(currentText, value.lineStart, value.lineEnd)
         -- print(currentLine)
         love.graphics.print(currentLine, x, y)
-        y = y + 20
+        y = y + lineIncrement
         -- print(value.lineStart)
         -- print(value.lineEnd)
     end
-    love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
-    love.graphics.print(text_buffer_list.textInput, 20,20)
+    local x = 20
+    local y = 20
+    for index, value in ipairs(text_handler.text_boss.linesTable) do
+        local lineStart = value.lineStart
+        local lineEnd = value.lineEnd
+        if #text_buffer_list.textInput < lineEnd then
+            lineEnd = #text_buffer_list.textInput
+        end
+        if #text_buffer_list.textInput > 0 then
+            local currenLine = string.sub(text_buffer_list.textInput, lineStart, lineEnd)
+            love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
+            love.graphics.print(currenLine, x,y)
+            y = y + lineIncrement
+        end
+    end
+
+    
 
     
     -- ---------------------------------
