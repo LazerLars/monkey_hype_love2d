@@ -111,6 +111,19 @@ function love.draw()
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
 
+    local x = 20
+    local y = 20 
+    local currentText = text_handler.text_boss.quote
+    -- love.graphics.print("Creativity is thinking up new things.", x, y)
+    for key, value in ipairs(text_handler.text_boss.linesTable) do
+        -- print(value['lineStart'])
+        local currentLine = string.sub(currentText, value.lineStart, value.lineEnd)
+        -- print(currentLine)
+        love.graphics.print(currentLine, x, y)
+        y = y + 20
+        -- print(value.lineStart)
+        -- print(value.lineEnd)
+    end
     -- ---------------------------------
     
     -- test_lines_on_screen()
