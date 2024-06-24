@@ -56,6 +56,7 @@ screen_rules = {
     max_chars_per_line = 36
 }
 
+youWin = false
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -109,8 +110,50 @@ function love.draw()
     -- game draw logic here
     -- print mouse cordinates
     love.graphics.setColor(1, 1, 1)
-    love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
+    
+    -- youWin = true
+    if youWin then
+        love.graphics.print('Confetti', 50, 50)
+        love.graphics.print('Press enter to get next text', 50, 90)
+    else
+        local x = 20
+        local y = 20 
+        local lineIncrement = 25
+        local currentText = text_handler.text_boss.quote
+        -- love.graphics.print("Creativity is thinking up new things.", x, y)
+        for key, value in ipairs(text_handler.text_boss.linesTable) do
+            -- print(value['lineStart'])
+            --print line numbers
+            -- love.graphics.print(key, x-20, y)
+            local currentLine = string.sub(currentText, value.lineStart, value.lineEnd)
+            -- print(currentLine)
+            love.graphics.print(currentLine, x, y)
+            y = y + lineIncrement
+            -- print(value.lineStart)
+            -- print(value.lineEnd)
+        end
 
+        local x = 20
+        local y = 20
+        for index, value in ipairs(text_handler.text_boss.linesTable) do
+            local lineStart = value.lineStart
+            local lineEnd = value.lineEnd
+            if #text_buffer_list.textInput < lineEnd then
+                lineEnd = #text_buffer_list.textInput
+            end
+            if #text_buffer_list.textInput > 0 then
+                local currenLine = string.sub(text_buffer_list.textInput, lineStart, lineEnd)
+                love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
+                love.graphics.print(currenLine, x,y)
+                y = y + lineIncrement
+            end
+        end
+    end
+
+    
+
+    love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
+    
     -- ---------------------------------
     
     -- test_lines_on_screen()
@@ -122,20 +165,25 @@ function love.draw()
     -- max 16 lines
     -- first line start at x = 20
     -- draw text to write
-    love.graphics.print("Somewhere over the rainbow ^^", 32, settings.height/2)
+    -- love.graphics.print("Somewhere over the rainbow ^^", 32, settings.height/2)
     
     --draw user text inptu
-    love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
-    love.graphics.print(text_buffer_list.textInput, 32, settings.height/2)
+    
+    -- love.graphics.print(text_buffer_list.textInput, 32, settings.height/2)
 
     -- love.graphics.print("AA", 612, settings.height/2)
     -- love.graphics.print("AA", 1, settings.height/2)
     -- reset text color to base
-    love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
-    -- p
-    love.graphics.print("_ input#" .. #text_buffer_list.textInput, 250, 1)
+    -- print input length and mouse cordinates
+    local debug = false
+    if debug then
+        love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
 
-    love.graphics.circle('fill', mouse_x, mouse_y, 5)
+        love.graphics.print("_ input#" .. #text_buffer_list.textInput, 250, 1)
+    
+        love.graphics.circle('fill', mouse_x, mouse_y, 5)
+        
+    end
 
     love.graphics.pop()
 end
@@ -185,6 +233,7 @@ function love.keypressed(key)
     end
     if key == 'escape' then
         text_handler.select_next_qoute()
+        text_buffer_list.textInput = ""
         print('------------------------------')
         print('------------------------------')
         print('CURRENT QUOTE:')
@@ -192,11 +241,22 @@ function love.keypressed(key)
         print('------------------------------')
         print('------------------------------')
     end
+
+    if key == "return" then
+        youWin = false
+        text_handler.select_next_qoute()
+        text_buffer_list.textInput = ""
+    end
 end
 
 
 function love.textinput(t)
-    text_buffer_list.textInput = text_buffer_list.textInput .. t
+    if text_buffer_list.textInput ~= text_handler.text_boss.quote then
+        text_buffer_list.textInput = text_buffer_list.textInput .. t
+    end
+    if text_buffer_list.textInput == text_handler.text_boss.quote then
+        youWin = true
+    end
 end
 
 
