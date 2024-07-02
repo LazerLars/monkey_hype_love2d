@@ -57,6 +57,7 @@ screen_rules = {
 }
 
 youWin = false
+timer = 0
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -97,6 +98,8 @@ end
 
 
 function love.update(dt)
+    timer = timer + dt
+    print(timer)
     -- Get the current window size
     calculateMouseOffsets()
 end

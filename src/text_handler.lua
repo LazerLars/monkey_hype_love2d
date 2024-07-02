@@ -28,7 +28,8 @@ text_handler.text_boss = {
         author = '',
         text_length = 0,
         linesTable = {},
-        textAsCharTable = {}
+        textAsCharTable = {},
+        numbOfWords = 0
 }
 
 
@@ -266,7 +267,7 @@ function text_handler.calculate_current_qoute_on_screen_settings()
     text_handler.text_boss.linesTable = linesTable
     text_handler.text_boss.textAsCharTable = textAsCharTable
     text_handler.text_boss.numbOfLinesForText = #linesTable
-    
+    text_handler.count_numb_of_words()
     return linesTable
 end
 
@@ -280,6 +281,23 @@ function text_handler.split_string_into_char_table(text)
     end
     return charTable
 end
+
+function text_handler.count_numb_of_words()
+    -- ensure the counter is 0
+    text_handler.text_boss.numbOfWords = 0
+    for index, value in ipairs(text_handler.text_boss.textAsCharTable) do
+        if value == " " then
+            text_handler.text_boss.numbOfWords = text_handler.text_boss.numbOfWords + 1
+        end
+    end
+    -- when we are done looping we know we have to add one more word
+    text_handler.text_boss.numbOfWords = text_handler.text_boss.numbOfWords + 1
+    
+    print("... let count")
+    print(text_handler.text_boss.numbOfWords)
+    print("...")
+end
+
 
 
 
