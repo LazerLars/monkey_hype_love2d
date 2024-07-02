@@ -286,21 +286,17 @@ end
 
 function love.textinput(t)
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
-        
-        -- if debugMode == true then
-        --     text_buffer_list.textInput = text_buffer_list.textInput .. t
-        -- elseif debugMode == false then
-         
-
-        -- end
         if noErrorMode == true then
             -- only allow correct words chars to be written.
             if text_handler.text_boss.textAsCharTable[textInputIndex] == t then
                 text_buffer_list.textInput = text_buffer_list.textInput .. t
                 textInputIndex = textInputIndex + 1
             end
+        elseif noErrorMode == false then
+            text_buffer_list.textInput = text_buffer_list.textInput .. t
         end
     end
+
     if text_buffer_list.textInput == text_handler.text_boss.quote then
         youWin = true
     end
