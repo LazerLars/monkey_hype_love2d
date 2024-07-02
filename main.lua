@@ -290,7 +290,7 @@ function love.keypressed(key)
 
     if key == "1" then
         print('confetti wrapper')
-        confetti.add_confetti(mouse_x,mouse_y, 100, 10)
+        confetti.add_confetti(mouse_x,mouse_y)
 
     end
 end

@@ -7,28 +7,70 @@ function confetti.load()
 end
 
 function confetti.update(dt)
+    
     for key, value in pairs(confetti.list) do
-        value.x = value.x + dt * value.speed * value.direction
-        value.y = value.y + dt * value.speed
+        value.x = value.x + value.xSpeed * dt
+        value.y = value.y + value.y_speed * dt
+        if value.x >= 600 then
+            table.remove(confetti.list, key)
+        end
     end
 end
 
 function confetti.draw()
     for key, value in pairs(confetti.list) do
-        confetti.color_ColorPalette_sobeachy8(math.random(1,8))
+        confetti.color_ColorPalette_sobeachy8(value.color)
         love.graphics.rectangle('fill', value.x, value.y, 5,10)
-    end
-end
-
-function confetti.add_confetti(x,y,speed,gravity)
-    local speedMultiplier = math.random(1,100)
-    for i = 1, 10, 1 do
-        local direction = (math.random(0, 1) == 0) and -1 or 1 
-        speed = speed+speedMultiplier
-        table.insert(confetti.list, {x=x+i*2,y=y+i,speed=speed,gravity=gravity, direction=direction})
         
     end
 end
+
+-- function confetti.add_confetti(x,y)
+--     for i = 1, confetti.randomInt(10,20), 1 do
+--         local dir = confetti.randomInt(0,1)
+
+--         local direction = ''
+--         if dir == 0 then
+--             direction = 'left'
+--         else 
+--             direction = 'right'
+--         end
+--         local newX = confetti.randomInt(x, x+10)
+--         local color = confetti.randomInt(1,8)
+--         local confetti_obj = {
+--             x = confetti.randomInt(x, x+6),
+--             y = y,
+--             speed = confetti.randomInt(10,80),
+--             direction = direction,
+--             color = color,
+--             life = 10
+--         }
+--         table.insert(confetti.list, confetti_obj)
+--     end
+-- end
+
+function confetti.add_confetti(x, y)
+    for i = 1, confetti.randomInt(100, 500) do
+        local random = confetti.randomInt(1, 100)
+        local direction = (random >= 50) and 1 or -1
+
+        local newX = confetti.randomInt(x, x + 10)
+        local color = confetti.randomInt(1, 8)
+        local x_speed = confetti.randomInt(10, 80) * direction  -- Adjust speed based on direction
+
+        local confetti_obj = {
+            x = newX,
+            y = y,
+            xSpeed = x_speed,
+            y_speed = confetti.randomInt(10, 80),
+            direction = direction,
+            color = color,
+            life = 10
+        }
+        table.insert(confetti.list, confetti_obj)
+    end
+end
+
 
 function confetti.color_ColorPalette_sobeachy8(color)
 	local selectedColor = love.graphics.setColor(229/255, 83/255, 136/255)
@@ -51,6 +93,27 @@ function confetti.color_ColorPalette_sobeachy8(color)
         selectedColor = love.graphics.setColor(90/255, 197/255, 204/255)  -- #5ac5cc
     end
 	return selectedColor
+end
+
+function confetti.randomInt(num1, num2)
+    local seed = 0
+    for i = 1, 3 do
+        seed = seed * 256 + love.timer.getTime() * 1000 % 256
+    end
+    math.randomseed(seed)
+
+    local numb = math.random(num1,num2)
+
+    numb = math.random(num1,num2)
+    numb = math.random(num1,num2)
+    numb = math.random(num1,num2)
+    numb = math.random(num1,num2)
+    numb = math.random(num1,num2)
+    
+
+    numb = math.ceil(numb)
+
+    return numb
 end
 
 
