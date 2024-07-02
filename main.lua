@@ -12,7 +12,6 @@ local text_buffer_list = {
     textInput = ""
 }
 
-
     -- recommended screen sizes
 ---+--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 -- | scale factor | desktop res | 1    | 2   | 3   | 4   | 5   | 6   | 8   | 10  |
@@ -281,6 +280,10 @@ function love.keypressed(key)
             
         end
     end
+
+    if key == "1" then
+        print('confetti wrapper')
+    end
 end
 
 
@@ -301,8 +304,6 @@ function love.textinput(t)
         youWin = true
     end
 end
-
-
 
 function test_lines_on_screen()
     for i = 1, 16, 1 do
