@@ -62,6 +62,8 @@ local timer = 0
 
 -- index for what char the user is about to write
 local textInputIndex = 1
+-- this mode will only allow correct char to be pressed on the screen
+local noErrorMode = true
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -100,11 +102,7 @@ function love.load()
     end
 
     if debugMode then
-        text_buffer_list.textInput = string.sub(text_handler.text_boss.quote, 1, #text_handler.text_boss.quote-3)
-        -- we need to set our text input since we only allow correct chars to be written in no error mode
-        textInputIndex = #text_handler.text_boss.quote-3 + 1
-
-        print(text_handler.text_boss.textAsCharTable[textInputIndex])
+        setup_textInput_in_debugMode()
     end
 end
 
@@ -270,21 +268,25 @@ function love.keypressed(key)
     end
 
     if key == "return" then
-        youWin = false
-        textInputIndex = 1
+        if youWin == true then
+            youWin = false
+            textInputIndex = 1
+            
+            text_buffer_list.textInput = ""
+        end
         if debugMode == true then
             
             text_handler.select_next_qoute()
+            setup_textInput_in_debugMode()
+            
         end
-        text_buffer_list.textInput = ""
     end
 end
 
 
 function love.textinput(t)
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
-        -- this mode will only allow correct char to be pressed on the screen
-        local noErrorMode = true
+        
         -- if debugMode == true then
         --     text_buffer_list.textInput = text_buffer_list.textInput .. t
         -- elseif debugMode == false then
@@ -313,4 +315,10 @@ function test_lines_on_screen()
         love.graphics.print(i .. " some where over the rainbow", 1, y )    
         
     end
+end
+
+function setup_textInput_in_debugMode()
+    text_buffer_list.textInput = string.sub(text_handler.text_boss.quote, 1, #text_handler.text_boss.quote-3)
+    -- we need to set our text input since we only allow correct chars to be written in no error mode
+    textInputIndex = #text_handler.text_boss.quote-3 + 1
 end
