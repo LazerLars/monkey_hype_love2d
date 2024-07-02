@@ -11,7 +11,8 @@ function confetti.update(dt)
     for key, value in pairs(confetti.list) do
         value.x = value.x + value.xSpeed * dt
         value.y = value.y + value.y_speed * dt
-        if value.x >= 600 then
+        value.life = value.life - 0.01
+        if value.life <=  0 then
             table.remove(confetti.list, key)
         end
     end
@@ -119,6 +120,10 @@ function confetti.randomInt(num1, num2)
     numb = math.ceil(numb)
 
     return numb
+end
+
+function confetti.clearConfettiList()
+    confetti.list = {}
 end
 
 

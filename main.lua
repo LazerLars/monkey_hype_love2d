@@ -2,7 +2,7 @@ if arg[2] == "debug" then
     require("lldebugger").start()
 end
 
-debugMode = true
+debugMode = false
 
 local utf8 = require("utf8")
 local text_handler = require "src.text_handler"
@@ -64,6 +64,8 @@ local timer = 0
 local textInputIndex = 1
 -- this mode will only allow correct char to be pressed on the screen
 local noErrorMode = true
+
+local confettiPuf = false
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -132,6 +134,15 @@ function love.draw()
     
     -- youWin = true
     if youWin then
+        if confettiPuf == false then
+            confettiSpawnX = confetti.randomInt(settings.width/2-50, settings.width/2+50)
+            confettiSpawnY = confetti.randomInt(settings.height/2-50, settings.height/2+50)
+            
+            confetti.add_confetti(confettiSpawnX, confettiSpawnY)
+            confetti.add_confetti(confettiSpawnX, confettiSpawnY)
+            
+            confettiPuf = true
+        end
         timer = math.ceil(timer)
         local y = 40
         local yIncrement = 20
@@ -260,6 +271,7 @@ function love.keypressed(key)
         local byteoffset = utf8.offset(text_buffer_list.textInput, -1)
         if byteoffset then
             text_buffer_list.textInput = string.sub(text_buffer_list.textInput, 1, byteoffset - 1)
+            textInputIndex = textInputIndex - 1
         end
     end
     if key == 'escape' then
@@ -276,9 +288,12 @@ function love.keypressed(key)
     if key == "return" then
         if youWin == true then
             youWin = false
+            confettiPuf = false
+            confetti.clearConfettiList()
             textInputIndex = 1
             
             text_buffer_list.textInput = ""
+            text_handler.select_next_qoute()
         end
         if debugMode == true then
             
