@@ -22,7 +22,7 @@ local text_buffer_list = {
 -- +--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
 local settings = {
     fullscreen = false,
-    screenScaler = 1,
+    screenScaler = 2,
     width = 640,
     height = 360,
     -- grey: #333a45 ,51,58,69 
@@ -275,8 +275,10 @@ function love.keypressed(key)
         end
     end
     if key == 'escape' then
+        timer = 0
         text_handler.select_next_qoute()
         text_buffer_list.textInput = ""
+        textInputIndex = 1
         print('------------------------------')
         print('------------------------------')
         print('CURRENT QUOTE:')
@@ -312,6 +314,7 @@ end
 
 
 function love.textinput(t)
+    play_click_sound()
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
         if noErrorMode == true then
             -- only allow correct words chars to be written.
@@ -342,6 +345,12 @@ function setup_textInput_in_debugMode()
     text_buffer_list.textInput = string.sub(text_handler.text_boss.quote, 1, #text_handler.text_boss.quote-3)
     -- we need to set our text input since we only allow correct chars to be written in no error mode
     textInputIndex = #text_handler.text_boss.quote-3 + 1
+end
+
+function play_click_sound()
+    local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
+    love.audio.play(sfx_click)
+    sfx_click:play()
 end
 
 

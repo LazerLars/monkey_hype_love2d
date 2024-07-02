@@ -126,5 +126,12 @@ function confetti.clearConfettiList()
     confetti.list = {}
 end
 
+function confetti.play_pop()
+    -- local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
+    local sfx_click = love.audio.newSource('sfx/bubble.wav', 'stream')
+    love.audio.play(sfx_click)
+    sfx_click:play()
+end
+
 
 return confetti
