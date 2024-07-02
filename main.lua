@@ -2,6 +2,7 @@ if arg[2] == "debug" then
     require("lldebugger").start()
 end
 
+debugMode = false
 
 local utf8 = require("utf8")
 local text_handler = require "src.text_handler"
@@ -94,12 +95,19 @@ function love.load()
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
         text_handler.mode_single_words_mode()
     end
+
+    if debugMode then
+        text_buffer_list.textInput = string.sub(text_handler.text_boss.quote, 1, #text_handler.text_boss.quote-3)
+    end
 end
 
 
 function love.update(dt)
-    timer = timer + dt
-    print(timer)
+    if youWin == false then
+        timer = timer + dt
+        print(timer)
+        
+    end
     -- Get the current window size
     calculateMouseOffsets()
 end
@@ -118,6 +126,11 @@ function love.draw()
     if youWin then
         love.graphics.print('Confetti', 50, 50)
         love.graphics.print('Press enter to get next text', 50, 90)
+        timer = math.ceil(timer)
+        love.graphics.print('Time: ' .. timer .. 's', 50, 10)
+        local wpm = (timer / text_handler.text_boss.numbOfWords)*60
+        wpm = math.ceil(wpm)
+        love.graphics.print('WPM: ' .. wpm, 50, 30)
     else
         local x = 20
         local y = 20 
@@ -178,8 +191,8 @@ function love.draw()
     -- love.graphics.print("AA", 1, settings.height/2)
     -- reset text color to base
     -- print input length and mouse cordinates
-    local debug = false
-    if debug then
+    
+    if debugMode then
         love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
 
         love.graphics.print("_ input#" .. #text_buffer_list.textInput, 250, 1)
@@ -247,7 +260,7 @@ function love.keypressed(key)
 
     if key == "return" then
         youWin = false
-        text_handler.select_next_qoute()
+        -- text_handler.select_next_qoute()
         text_buffer_list.textInput = ""
     end
 end
