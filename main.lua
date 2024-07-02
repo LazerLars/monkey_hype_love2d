@@ -6,6 +6,7 @@ debugMode = true
 
 local utf8 = require("utf8")
 local text_handler = require "src.text_handler"
+local confetti = require "src.confetti"
 
 
 local text_buffer_list = {
@@ -103,6 +104,8 @@ function love.load()
     if debugMode then
         setup_textInput_in_debugMode()
     end
+
+    confetti.load()
 end
 
 
@@ -113,6 +116,8 @@ function love.update(dt)
     end
     -- Get the current window size
     calculateMouseOffsets()
+
+    confetti.update(dt)
 end
 
 
@@ -209,6 +214,8 @@ function love.draw()
         
     end
 
+    confetti.draw()
+
     love.graphics.pop()
 end
 
@@ -283,6 +290,8 @@ function love.keypressed(key)
 
     if key == "1" then
         print('confetti wrapper')
+        confetti.add_confetti(mouse_x,mouse_y, 100)
+
     end
 end
 
@@ -319,3 +328,5 @@ function setup_textInput_in_debugMode()
     -- we need to set our text input since we only allow correct chars to be written in no error mode
     textInputIndex = #text_handler.text_boss.quote-3 + 1
 end
+
+
