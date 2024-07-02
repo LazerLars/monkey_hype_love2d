@@ -2,7 +2,7 @@ if arg[2] == "debug" then
     require("lldebugger").start()
 end
 
-debugMode = false
+debugMode = true
 
 local utf8 = require("utf8")
 local text_handler = require "src.text_handler"
@@ -58,7 +58,12 @@ screen_rules = {
 }
 
 youWin = false
-timer = 0
+local timer = 0
+
+-- index for what char the user is about to write
+local textInputIndex = 1
+-- this mode will only allow correct char to be pressed on the screen
+local noErrorMode = true
 -- global mouse variables to hold correct mouse pos in the scaled world 
 mouse_x, mouse_y = ...
 
@@ -97,7 +102,7 @@ function love.load()
     end
 
     if debugMode then
-        text_buffer_list.textInput = string.sub(text_handler.text_boss.quote, 1, #text_handler.text_boss.quote-3)
+        setup_textInput_in_debugMode()
     end
 end
 
@@ -105,7 +110,6 @@ end
 function love.update(dt)
     if youWin == false then
         timer = timer + dt
-        print(timer)
         
     end
     -- Get the current window size
@@ -124,13 +128,18 @@ function love.draw()
     
     -- youWin = true
     if youWin then
-        love.graphics.print('Confetti', 50, 50)
-        love.graphics.print('Press enter to get next text', 50, 90)
         timer = math.ceil(timer)
-        love.graphics.print('Time: ' .. timer .. 's', 50, 10)
+        local y = 40
+        local yIncrement = 20
+        love.graphics.print('Time: ' .. timer .. 's', 50, y)
+        y = y + yIncrement
         local wpm = (timer / text_handler.text_boss.numbOfWords)*60
         wpm = math.ceil(wpm)
-        love.graphics.print('WPM: ' .. wpm, 50, 30)
+        love.graphics.print('WPM: ' .. wpm, 50, y)
+        y = y + yIncrement
+        love.graphics.print('Words: ' .. text_handler.text_boss.numbOfWords, 50, y)
+        -- love.graphics.print('Confetti', 50, 50)
+        love.graphics.print('Press enter to get next text', 50, settings.height/2)
     else
         local x = 20
         local y = 20 
@@ -259,17 +268,35 @@ function love.keypressed(key)
     end
 
     if key == "return" then
-        youWin = false
-        -- text_handler.select_next_qoute()
-        text_buffer_list.textInput = ""
+        if youWin == true then
+            youWin = false
+            textInputIndex = 1
+            
+            text_buffer_list.textInput = ""
+        end
+        if debugMode == true then
+            
+            text_handler.select_next_qoute()
+            setup_textInput_in_debugMode()
+            
+        end
     end
 end
 
 
 function love.textinput(t)
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
-        text_buffer_list.textInput = text_buffer_list.textInput .. t
+        if noErrorMode == true then
+            -- only allow correct words chars to be written.
+            if text_handler.text_boss.textAsCharTable[textInputIndex] == t then
+                text_buffer_list.textInput = text_buffer_list.textInput .. t
+                textInputIndex = textInputIndex + 1
+            end
+        elseif noErrorMode == false then
+            text_buffer_list.textInput = text_buffer_list.textInput .. t
+        end
     end
+
     if text_buffer_list.textInput == text_handler.text_boss.quote then
         youWin = true
     end
@@ -284,4 +311,10 @@ function test_lines_on_screen()
         love.graphics.print(i .. " some where over the rainbow", 1, y )    
         
     end
+end
+
+function setup_textInput_in_debugMode()
+    text_buffer_list.textInput = string.sub(text_handler.text_boss.quote, 1, #text_handler.text_boss.quote-3)
+    -- we need to set our text input since we only allow correct chars to be written in no error mode
+    textInputIndex = #text_handler.text_boss.quote-3 + 1
 end
