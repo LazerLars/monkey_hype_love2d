@@ -2,7 +2,7 @@ if arg[2] == "debug" then
     require("lldebugger").start()
 end
 
-debugMode = false
+debugMode = true
 
 local utf8 = require("utf8")
 local text_handler = require "src.text_handler"
@@ -347,6 +347,7 @@ function love.textinput(t)
     if text_buffer_list.textInput == text_handler.text_boss.quote then
         youWin = true
         timerStart = false
+        play_youWin_sound()
     end
 end
 
@@ -367,6 +368,12 @@ end
 
 function play_click_sound()
     local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
+    love.audio.play(sfx_click)
+    sfx_click:play()
+end
+
+function play_youWin_sound()
+    local sfx_click = love.audio.newSource('sfx/wopple.wav', 'stream')
     love.audio.play(sfx_click)
     sfx_click:play()
 end
