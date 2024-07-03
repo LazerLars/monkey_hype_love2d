@@ -241,7 +241,7 @@ function text_handler.calculate_current_qoute_on_screen_settings()
                 for i = nextEndPos, currentPos, -1 do
                     -- if we find a space at pos i, we know we dont need to loop anymore
                     if textAsCharTable[i] == " " then
-                        print('we found closest space at pos: ' .. i)
+                        -- print('we found closest space at pos: ' .. i)
                         local newSpacePos = i
                         --insert line settings into the table
                         table.insert(linesTable, {lineStart = currentPos, lineEnd = newSpacePos})
@@ -293,9 +293,9 @@ function text_handler.count_numb_of_words()
     -- when we are done looping we know we have to add one more word
     text_handler.text_boss.numbOfWords = text_handler.text_boss.numbOfWords + 1
     
-    print("... let count")
-    print(text_handler.text_boss.numbOfWords)
-    print("...")
+    -- print("... let count")
+    -- print(text_handler.text_boss.numbOfWords)
+    -- print("...")
 end
 
 

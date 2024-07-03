@@ -34,15 +34,15 @@ local settings = {
     },
     -- white
     text_color_base = {
-        r = 244,
-        g = 244,
-        b = 244
+        r = 1,
+        g = 1,
+        b = 1
     }, 
     -- pink
     text_color_user_intput = { 
-        r = 244,
-        g = 76,
-        b = 127
+        r = 255,
+        g = 128,
+        b = 164
     }
 }
 
@@ -57,8 +57,13 @@ screen_rules = {
     max_chars_per_line = 36
 }
 
+local logoTimer = 0 
+local logoShowDuration = 2
+local showLogo = true
 youWin = false
 local timer = 0
+local timerStart = false
+local mistakes = 0
 
 -- index for what char the user is about to write
 local textInputIndex = 1
@@ -70,9 +75,10 @@ local confettiPuf = false
 mouse_x, mouse_y = ...
 
 function love.load()
+    monkeyHypeLogo = love.graphics.newImage('sprites/monkey_hype_logo_640_360.png')
     love.mouse.setVisible(false)
     love.keyboard.setKeyRepeat(true)
-
+    
     love.window.setTitle( 'inLove2D' )
     -- Set up the window with resizable option
     love.window.setMode(settings.width, settings.height, {resizable=true, vsync=0, minwidth=settings.width*settings.screenScaler, minheight=settings.height*settings.screenScaler})
@@ -112,8 +118,17 @@ end
 
 
 function love.update(dt)
+    if showLogo == true then
+        logoTimer = logoTimer + dt
+        if logoTimer >= logoShowDuration then
+            showLogo = false
+        end
+    end
     if youWin == false then
-        timer = timer + dt
+        if timerStart == true then
+            timer = timer + dt
+            
+        end
         
     end
     -- Get the current window size
@@ -127,10 +142,12 @@ function love.draw()
     love.graphics.push()
     love.graphics.translate(offsetX, offsetY)
     love.graphics.scale(scale, scale)
-
-    -- game draw logic here
+    if showLogo == true then
+        love.graphics.draw(monkeyHypeLogo, 0,0)
+    else
+        -- game draw logic here
     -- print mouse cordinates
-    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(settings.text_color_base.r, settings.text_color_base.g, settings.text_color_base.b)
     
     -- youWin = true
     if youWin then
@@ -144,15 +161,20 @@ function love.draw()
             confettiPuf = true
         end
         timer = math.ceil(timer)
+        local x = 50
         local y = 40
         local yIncrement = 20
-        love.graphics.print('Time: ' .. timer .. 's', 50, y)
+        love.graphics.print('Time: ' .. timer .. 's', x, y)
         y = y + yIncrement
-        local wpm = (timer / text_handler.text_boss.numbOfWords)*60
+        -- local wpm = (timer / text_handler.text_boss.numbOfWords)*60
+        -- wpm calc = (total words - mistakes) / time
+        local wpm = (text_handler.text_boss.numbOfWords - 0) / (timer / 60)
         wpm = math.ceil(wpm)
-        love.graphics.print('WPM: ' .. wpm, 50, y)
+        love.graphics.print('WPM: ' .. wpm, x, y)
         y = y + yIncrement
-        love.graphics.print('Words: ' .. text_handler.text_boss.numbOfWords, 50, y)
+        love.graphics.print('Words: ' .. text_handler.text_boss.numbOfWords, x, y)
+        y = y + yIncrement
+        love.graphics.print('Mistakes: ' .. mistakes, x, y)
         -- love.graphics.print('Confetti', 50, 50)
         love.graphics.print('Press enter to get next text', 50, settings.height/2)
     else
@@ -227,6 +249,9 @@ function love.draw()
 
     confetti.draw()
 
+    end
+    
+
     love.graphics.pop()
 end
 
@@ -276,6 +301,7 @@ function love.keypressed(key)
     end
     if key == 'escape' then
         timer = 0
+        mistakes = 0
         text_handler.select_next_qoute()
         text_buffer_list.textInput = ""
         textInputIndex = 1
@@ -288,14 +314,18 @@ function love.keypressed(key)
     end
 
     if key == "return" then
+        if showLogo == true then
+            showLogo = false
+        end
         if youWin == true then
             youWin = false
             confettiPuf = false
             confetti.clearConfettiList()
             textInputIndex = 1
-            
             text_buffer_list.textInput = ""
             text_handler.select_next_qoute()
+            timer = 0
+            mistakes = 0
         end
         if debugMode == true then
             
@@ -314,6 +344,9 @@ end
 
 
 function love.textinput(t)
+    if timerStart == false then
+        timerStart = true
+    end
     play_click_sound()
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
         if noErrorMode == true then
@@ -321,6 +354,8 @@ function love.textinput(t)
             if text_handler.text_boss.textAsCharTable[textInputIndex] == t then
                 text_buffer_list.textInput = text_buffer_list.textInput .. t
                 textInputIndex = textInputIndex + 1
+            else    
+                mistakes = mistakes + 1
             end
         elseif noErrorMode == false then
             text_buffer_list.textInput = text_buffer_list.textInput .. t
@@ -329,6 +364,8 @@ function love.textinput(t)
 
     if text_buffer_list.textInput == text_handler.text_boss.quote then
         youWin = true
+        timerStart = false
+        play_youWin_sound()
     end
 end
 
@@ -349,6 +386,12 @@ end
 
 function play_click_sound()
     local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
+    love.audio.play(sfx_click)
+    sfx_click:play()
+end
+
+function play_youWin_sound()
+    local sfx_click = love.audio.newSource('sfx/wopple.wav', 'stream')
     love.audio.play(sfx_click)
     sfx_click:play()
 end

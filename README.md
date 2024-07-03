@@ -1,4 +1,5 @@
 # monkey_hype_love2d
+![](sprites/monkey_hype_logo_640_360.png)  
 demake of monkey type in love2d. Monkey See Monkey Type in Love2d c,")
 
 ![](monkey_hype_00.gif)
