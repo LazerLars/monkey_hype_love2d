@@ -59,6 +59,7 @@ screen_rules = {
 
 youWin = false
 local timer = 0
+local timerStart = false
 local mistakes = 0
 
 -- index for what char the user is about to write
@@ -114,7 +115,10 @@ end
 
 function love.update(dt)
     if youWin == false then
-        timer = timer + dt
+        if timerStart == true then
+            timer = timer + dt
+            
+        end
         
     end
     -- Get the current window size
@@ -145,17 +149,20 @@ function love.draw()
             confettiPuf = true
         end
         timer = math.ceil(timer)
+        local x = 50
         local y = 40
         local yIncrement = 20
-        love.graphics.print('Time: ' .. timer .. 's', 50, y)
+        love.graphics.print('Time: ' .. timer .. 's', x, y)
         y = y + yIncrement
         -- local wpm = (timer / text_handler.text_boss.numbOfWords)*60
         -- wpm calc = (total words - mistakes) / time
         local wpm = (text_handler.text_boss.numbOfWords - 0) / (timer / 60)
         wpm = math.ceil(wpm)
-        love.graphics.print('WPM: ' .. wpm, 50, y)
+        love.graphics.print('WPM: ' .. wpm, x, y)
         y = y + yIncrement
-        love.graphics.print('Words: ' .. text_handler.text_boss.numbOfWords, 50, y)
+        love.graphics.print('Words: ' .. text_handler.text_boss.numbOfWords, x, y)
+        y = y + yIncrement
+        love.graphics.print('Mistakes: ' .. mistakes, x, y)
         -- love.graphics.print('Confetti', 50, 50)
         love.graphics.print('Press enter to get next text', 50, settings.height/2)
     else
@@ -319,6 +326,9 @@ end
 
 
 function love.textinput(t)
+    if timerStart == false then
+        timerStart = true
+    end
     play_click_sound()
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
         if noErrorMode == true then
@@ -336,6 +346,7 @@ function love.textinput(t)
 
     if text_buffer_list.textInput == text_handler.text_boss.quote then
         youWin = true
+        timerStart = false
     end
 end
 
