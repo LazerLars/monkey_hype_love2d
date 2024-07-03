@@ -57,6 +57,9 @@ screen_rules = {
     max_chars_per_line = 36
 }
 
+local logoTimer = 0 
+local logoShowDuration = 2
+local showLogo = true
 youWin = false
 local timer = 0
 local timerStart = false
@@ -72,9 +75,10 @@ local confettiPuf = false
 mouse_x, mouse_y = ...
 
 function love.load()
+    monkeyHypeLogo = love.graphics.newImage('sprites/monkey_hype_logo_640_360.png')
     love.mouse.setVisible(false)
     love.keyboard.setKeyRepeat(true)
-
+    
     love.window.setTitle( 'inLove2D' )
     -- Set up the window with resizable option
     love.window.setMode(settings.width, settings.height, {resizable=true, vsync=0, minwidth=settings.width*settings.screenScaler, minheight=settings.height*settings.screenScaler})
@@ -114,6 +118,12 @@ end
 
 
 function love.update(dt)
+    if showLogo == true then
+        logoTimer = logoTimer + dt
+        if logoTimer >= logoShowDuration then
+            showLogo = false
+        end
+    end
     if youWin == false then
         if timerStart == true then
             timer = timer + dt
@@ -132,8 +142,10 @@ function love.draw()
     love.graphics.push()
     love.graphics.translate(offsetX, offsetY)
     love.graphics.scale(scale, scale)
-
-    -- game draw logic here
+    if showLogo == true then
+        love.graphics.draw(monkeyHypeLogo, 0,0)
+    else
+        -- game draw logic here
     -- print mouse cordinates
     love.graphics.setColor(1, 1, 1)
     
@@ -236,6 +248,9 @@ function love.draw()
     end
 
     confetti.draw()
+
+    end
+    
 
     love.graphics.pop()
 end
