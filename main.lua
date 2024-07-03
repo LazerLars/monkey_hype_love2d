@@ -28,9 +28,9 @@ local settings = {
     -- grey: #333a45 ,51,58,69 
     -- grey
     background_color =  {
-        r = 16,
-        g = 210,
-        b = 117
+        r = 51,
+        g = 58,
+        b = 69
     },
     -- white
     text_color_base = {
@@ -41,8 +41,8 @@ local settings = {
     -- pink
     text_color_user_intput = { 
         r = 255,
-        g = 209,
-        b = 0
+        g = 128,
+        b = 164
     }
 }
 
