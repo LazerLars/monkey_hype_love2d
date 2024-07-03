@@ -2,7 +2,7 @@ if arg[2] == "debug" then
     require("lldebugger").start()
 end
 
-debugMode = true
+debugMode = false
 
 local utf8 = require("utf8")
 local text_handler = require "src.text_handler"
@@ -28,21 +28,21 @@ local settings = {
     -- grey: #333a45 ,51,58,69 
     -- grey
     background_color =  {
-        r = 51,
-        g = 58,
-        b = 69
+        r = 16,
+        g = 210,
+        b = 117
     },
     -- white
     text_color_base = {
-        r = 244,
-        g = 244,
-        b = 244
+        r = 1,
+        g = 1,
+        b = 1
     }, 
     -- pink
     text_color_user_intput = { 
-        r = 244,
-        g = 76,
-        b = 127
+        r = 255,
+        g = 209,
+        b = 0
     }
 }
 
@@ -147,7 +147,7 @@ function love.draw()
     else
         -- game draw logic here
     -- print mouse cordinates
-    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(settings.text_color_base.r, settings.text_color_base.g, settings.text_color_base.b)
     
     -- youWin = true
     if youWin then
@@ -314,6 +314,9 @@ function love.keypressed(key)
     end
 
     if key == "return" then
+        if showLogo == true then
+            showLogo = false
+        end
         if youWin == true then
             youWin = false
             confettiPuf = false
