@@ -59,6 +59,7 @@ screen_rules = {
 
 youWin = false
 local timer = 0
+local mistakes = 0
 
 -- index for what char the user is about to write
 local textInputIndex = 1
@@ -148,7 +149,9 @@ function love.draw()
         local yIncrement = 20
         love.graphics.print('Time: ' .. timer .. 's', 50, y)
         y = y + yIncrement
-        local wpm = (timer / text_handler.text_boss.numbOfWords)*60
+        -- local wpm = (timer / text_handler.text_boss.numbOfWords)*60
+        -- wpm calc = (total words - mistakes) / time
+        local wpm = (text_handler.text_boss.numbOfWords - 0) / (timer / 60)
         wpm = math.ceil(wpm)
         love.graphics.print('WPM: ' .. wpm, 50, y)
         y = y + yIncrement
@@ -276,6 +279,7 @@ function love.keypressed(key)
     end
     if key == 'escape' then
         timer = 0
+        mistakes = 0
         text_handler.select_next_qoute()
         text_buffer_list.textInput = ""
         textInputIndex = 1
@@ -293,9 +297,10 @@ function love.keypressed(key)
             confettiPuf = false
             confetti.clearConfettiList()
             textInputIndex = 1
-            
             text_buffer_list.textInput = ""
             text_handler.select_next_qoute()
+            timer = 0
+            mistakes = 0
         end
         if debugMode == true then
             
@@ -321,6 +326,8 @@ function love.textinput(t)
             if text_handler.text_boss.textAsCharTable[textInputIndex] == t then
                 text_buffer_list.textInput = text_buffer_list.textInput .. t
                 textInputIndex = textInputIndex + 1
+            else    
+                mistakes = mistakes + 1
             end
         elseif noErrorMode == false then
             text_buffer_list.textInput = text_buffer_list.textInput .. t
