@@ -119,7 +119,7 @@
 "Most software today is very much like an Egyptian pyramid with millions of bricks piled on top of each other, with no structural integrity, but just done by brute force and thousands of slaves." Author: Alan Kay
 "I've finally learned what 'upward compatible' means. It means we get to keep all our old mistakes." Author: Dennie van Tassel
 "There are two major products that come out of Berkeley: LSD and UNIX. We don't believe this to be a coincidence." Author: Jeremy S. Anderson
-"Every operating system out there is about equal… We all suck." Author: Microsoft senior vice president Brian Valentine describing the state of the art in OS security, 2003
+"Every operating system out there is about equal  "We all suck." Author: Microsoft senior vice president Brian Valentine describing the state of the art in OS security, 2003
 "Microsoft has a new version out, Windows XP, which according to everybody is the 'most reliable Windows ever.' To me, this is like saying that asparagus is 'the most articulate vegetable ever.' " Author: Dave Barry
 "The Internet? Is that thing still around?" Author: Homer Simpson
 "The Web is like a dominatrix. Everywhere I turn, I see little buttons ordering me to Submit." Author: Nytwind

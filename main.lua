@@ -28,21 +28,21 @@ local settings = {
     -- grey: #333a45 ,51,58,69 
     -- grey
     background_color =  {
-        r = 51,
-        g = 58,
-        b = 69
+        r = 255,
+        g = 237,
+        b = 225
     },
     -- white
     text_color_base = {
-        r = 1,
-        g = 1,
-        b = 1
+        r = 198, --198
+        g = 176, --176
+        b = 161 --161
     }, 
     -- pink
     text_color_user_intput = { 
-        r = 255,
-        g = 128,
-        b = 164
+        r = 153,
+        g = 100,
+        b = 249
     }
 }
 
@@ -147,7 +147,7 @@ function love.draw()
     else
         -- game draw logic here
     -- print mouse cordinates
-    love.graphics.setColor(settings.text_color_base.r, settings.text_color_base.g, settings.text_color_base.b)
+    love.graphics.setColor(settings.text_color_base.r/255, settings.text_color_base.g/255, settings.text_color_base.b/255)
     
     -- youWin = true
     if youWin then
@@ -385,7 +385,8 @@ function setup_textInput_in_debugMode()
 end
 
 function play_click_sound()
-    local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
+    -- local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
+    local sfx_click = love.audio.newSource('sfx/click_02.wav', 'stream')
     love.audio.play(sfx_click)
     sfx_click:play()
 end
