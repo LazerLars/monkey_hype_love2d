@@ -119,7 +119,7 @@
 "Most software today is very much like an Egyptian pyramid with millions of bricks piled on top of each other, with no structural integrity, but just done by brute force and thousands of slaves." Author: Alan Kay
 "I've finally learned what 'upward compatible' means. It means we get to keep all our old mistakes." Author: Dennie van Tassel
 "There are two major products that come out of Berkeley: LSD and UNIX. We don't believe this to be a coincidence." Author: Jeremy S. Anderson
-"Every operating system out there is about equal… We all suck." Author: Microsoft senior vice president Brian Valentine describing the state of the art in OS security, 2003
+"Every operating system out there is about equal  "We all suck." Author: Microsoft senior vice president Brian Valentine describing the state of the art in OS security, 2003
 "Microsoft has a new version out, Windows XP, which according to everybody is the 'most reliable Windows ever.' To me, this is like saying that asparagus is 'the most articulate vegetable ever.' " Author: Dave Barry
 "The Internet? Is that thing still around?" Author: Homer Simpson
 "The Web is like a dominatrix. Everywhere I turn, I see little buttons ordering me to Submit." Author: Nytwind
@@ -191,7 +191,7 @@
 "Programming is like sex: one mistake and you're providing support for a lifetime." Author: Michael Sinz
 "There are two ways to write error-free programs; only the third one works." Author: Alan J. Perlis
 "You can either have software quality or you can have pointer arithmetic, but you cannot have both at the same time." Author: Bertrand Meyer
-"If McDonalds were run like a software company, one out of every hundred Big Macs would give you food poisoning, and the response would be, 'We're sorry, here's a coupon for two more.' " Author: Mark Minasi
+"If McDonalds were run like a software company, one out of every hundred Big Macs would give you food poisoning, and the response would be, 'We're sorry, here's a coupon for two more.'" Author: Mark Minasi
 "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live." Author: Martin Golding
 "To err is human, but to really foul things up you need a computer." Author: Paul Ehrlich
 "A computer lets you make more mistakes faster than any invention in human history–with the possible exceptions of handguns and tequila." Author: Mitch Radcliffe) 
@@ -227,7 +227,7 @@
 "Watch the little things; a small leak will sink a great ship." Author: Benjamin Franklin
 "Waste is worse than loss. The time is coming when every person who lays claim to ability will keep the question of waste before him constantly. The scope of thrift is limitless." Author: Thomas A. Edison
 "It is more than probable that the average man could, with no injury to his health, increase his efficiency fifty percent." Author: Walter Scott
-"The essential question is not, "How busy are you?" but "What are you busy at?" " Author: Oprah Winfrey
+"The essential question is not. "How busy are you?" but "What are you busy at?" " Author: Oprah Winfrey
 "A relentless barrage of "why's" is the best way to à your mind to pierce the clouded veil of thinking caused by the status quo. Use it often." Author: Shigeo Shingo
 "The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency." Author: Bill Gates
 "The world we have created is a product of our thinking; it cannot be changed without changing our thinking." Author: Albert Einstein
