@@ -46,11 +46,25 @@ local settings = {
     }
 }
 
-game_states = {
+game_playmodes = {
     words = 0,
     quotes_programmer = 1
 }
-game_state = 1
+game_playMode = 1
+
+local gameState = 0
+local gameStates = {
+    logo = 0,
+    menu = 1,
+    playing = 2
+}
+
+local selectedMenuItem = 1
+local menuItems = {
+    nextText = 1,
+    confetti = 2,
+    sauce = 3
+}
 
 screen_rules = {
     max_allowed_lines = 16,
@@ -64,12 +78,7 @@ youWin = false
 local timer = 0
 local timerStart = false
 local mistakes = 0
-local gameState = 0
-local gameStates = {
-    logo = 0,
-    menu = 1,
-    playing = 2
-}
+
 
 -- index for what char the user is about to write
 local textInputIndex = 1
@@ -101,7 +110,7 @@ function love.load()
     
     love.graphics.setFont(font)
     love.graphics.setDefaultFilter("nearest", "nearest")
-    if game_state == game_states.quotes_programmer then
+    if game_playMode == game_playmodes.quotes_programmer then
         -- read all words into the words list
         text_handler.mode_programmer_qoutes()
         print('------------------------------')
@@ -110,7 +119,7 @@ function love.load()
         print(text_handler.text_boss.quote)
         print('------------------------------')
         print('------------------------------')
-    elseif game_state == game_states.words then
+    elseif game_playMode == game_playmodes.words then
         -- text_handler.read_text_file_to_table(text_handler.text_file_names.words.common_eng_words, true)
         text_handler.mode_single_words_mode()
     end
@@ -260,12 +269,16 @@ function love.draw()
         local yIncement = 24
 
         love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
+        local x_selectedBar = x-5
+        local y_selectedBar = y-5
         love.graphics.rectangle('fill', x-5, y-5, 200, 24)
         love.graphics.setColor(settings.background_color.r/255,settings.background_color.g/255, settings.background_color.b/255)
         love.graphics.print("Next text...", x, y )
         love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
         y = y + yIncement
         love.graphics.print("Confetti...", x, y )
+        y = y + yIncement
+        love.graphics.print("Sauce...", x, y )
     end
     
 
@@ -317,6 +330,7 @@ function love.keypressed(key)
         end
     end
     if key == 'escape' then
+        confetti.clearConfettiList()
         if gameState ~= gameStates.logo then
             if gameState == gameStates.menu then
                 gameState = gameStates.playing
@@ -365,6 +379,23 @@ function love.keypressed(key)
         print('confetti wrapper')
         confetti.add_confetti(mouse_x,mouse_y)
 
+    end
+
+    if key == "down" then
+        selectedMenuItem = selectedMenuItem + 1
+        if selectedMenuItem > tableCounter(menuItems) then
+            selectedMenuItem = 1
+        end
+        print(selectedMenuItem)
+        
+    end
+    if key == "up" then
+        selectedMenuItem = selectedMenuItem - 1
+        
+        if selectedMenuItem == 0 then
+            selectedMenuItem = tableCounter(menuItems)
+        end
+        print(selectedMenuItem)
     end
 end
 
@@ -423,4 +454,10 @@ function play_youWin_sound()
     sfx_click:play()
 end
 
-
+function tableCounter(tbl)
+    local counter = 0
+    for index, value in pairs(tbl) do
+        counter = counter + 1
+    end
+    return counter
+end
