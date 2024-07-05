@@ -29,13 +29,13 @@ local settings = {
     -- grey
     background_color =  {
         r = 255,
-        g = 237,
-        b = 225
+        g = 251,
+        b = 247
     },
     -- white
     text_color_base = {
-        r = 198, --198
-        g = 176, --176
+        r = 147, --198
+        g = 161, --176
         b = 161 --161
     }, 
     -- pink
