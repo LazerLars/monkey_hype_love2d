@@ -254,6 +254,7 @@ function love.draw()
         end
 
         confetti.draw()
+    elseif gameState == gameStates.menu then
 
     end
     
@@ -306,17 +307,23 @@ function love.keypressed(key)
         end
     end
     if key == 'escape' then
-        timer = 0
-        mistakes = 0
-        text_handler.select_next_qoute()
-        text_buffer_list.textInput = ""
-        textInputIndex = 1
-        print('------------------------------')
-        print('------------------------------')
-        print('CURRENT QUOTE:')
-        print(text_handler.text_boss.quote)
-        print('------------------------------')
-        print('------------------------------')
+        if gameState == gameStates.menu then
+            gameState = gameStates.playing
+        else
+            gameState = gameStates.menu
+        end
+        -- gameState = gameStates.menu
+        -- timer = 0
+        -- mistakes = 0
+        -- text_handler.select_next_qoute()
+        -- text_buffer_list.textInput = ""
+        -- textInputIndex = 1
+        -- print('------------------------------')
+        -- print('------------------------------')
+        -- print('CURRENT QUOTE:')
+        -- print(text_handler.text_boss.quote)
+        -- print('------------------------------')
+        -- print('------------------------------')
     end
 
     if key == "return" then
