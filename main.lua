@@ -66,6 +66,13 @@ local menuItems = {
     sauce = 3
 }
 
+local menuSpecs = {
+    x_startPos = 420,
+    y_startPos = 60,
+    yIncrement = 24
+}
+
+
 screen_rules = {
     max_allowed_lines = 16,
     max_chars_per_line = 36
@@ -264,21 +271,31 @@ function love.draw()
 
         confetti.draw()
     elseif gameState == gameStates.menu then
-        local x = 40
-        local y = 40
-        local yIncement = 24
+        local x = menuSpecs.x_startPos
+        local y = menuSpecs.y_startPos
+        local yIncement = menuSpecs.yIncrement
+        
 
         love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
         local x_selectedBar = x-5
         local y_selectedBar = y-5
-        love.graphics.rectangle('fill', x-5, y-5, 200, 24)
-        love.graphics.setColor(settings.background_color.r/255,settings.background_color.g/255, settings.background_color.b/255)
+        
+        
+        if selectedMenuItem == menuItems.confetti then
+            y_selectedBar = y_selectedBar + menuSpecs.yIncrement
+        elseif selectedMenuItem == menuItems.sauce then
+            
+            y_selectedBar = y_selectedBar + (menuSpecs.yIncrement * 2)
+        end
+    
+        love.graphics.rectangle('fill', x_selectedBar, y_selectedBar, 200, 24)
+        love.graphics.setColor(0,0,0)
         love.graphics.print("Next text...", x, y )
+        y = y + yIncement
+        love.graphics.print("Confetti....", x, y )
+        y = y + yIncement
+        love.graphics.print("Sauce.......", x, y )
         love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
-        y = y + yIncement
-        love.graphics.print("Confetti...", x, y )
-        y = y + yIncement
-        love.graphics.print("Sauce...", x, y )
     end
     
 
