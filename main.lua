@@ -149,7 +149,7 @@ function love.update(dt)
     if youWin == false then
         if timerStart == true then
             timer = timer + dt
-            
+            print(timer)
         end
         
     end
@@ -349,6 +349,11 @@ function love.keypressed(key)
         end
     end
     if key == 'escape' then
+        if timerStart == true then
+            timerStart = false
+        elseif timerStart == false then
+            timerStart = true
+        end
         confetti.clearConfettiList()
         if gameState ~= gameStates.logo then
             if gameState == gameStates.menu then
