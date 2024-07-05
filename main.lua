@@ -296,6 +296,8 @@ function love.draw()
         y = y + yIncement
         love.graphics.print("Sauce.......", x, y )
         love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
+
+        confetti.draw()
     end
     
 
@@ -373,6 +375,16 @@ function love.keypressed(key)
     if key == "return" then
         if gameState == gameStates.logo then
             gameState = gameStates.playing
+        end
+        if gameState == gameStates.menu then
+            if selectedMenuItem == menuItems.nextText then
+                text_handler.select_next_qoute()
+                gameState = gameStates.playing
+            end
+
+            if selectedMenuItem == menuItems.confetti then
+                confetti.add_confetti(settings.width/2,settings.height/2)
+            end
         end
         if youWin == true then
             youWin = false
