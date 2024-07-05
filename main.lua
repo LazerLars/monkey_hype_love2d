@@ -79,7 +79,7 @@ screen_rules = {
 }
 
 local logoTimer = 0 
-local logoShowDuration = 2
+local logoShowDuration = 10
 local showLogo = true
 youWin = false
 local timer = 0
@@ -152,7 +152,7 @@ function love.update(dt)
     if youWin == false then
         if timerStart == true then
             timer = timer + dt
-            print(timer)
+            -- print(timer)
         end
         
     end
