@@ -140,6 +140,9 @@ end
 
 
 function love.update(dt)
+    if gameState ~= gameStates.playing then
+        timerStart = false
+    end
     if gameState == gameStates.logo then
         logoTimer = logoTimer + dt
         if logoTimer >= logoShowDuration then
@@ -409,27 +412,31 @@ function love.keypressed(key)
         end
     end
 
-    if key == "1" then
-        print('confetti wrapper')
-        confetti.add_confetti(mouse_x,mouse_y)
+    -- for testing confetti :) 
+    -- if key == "1" then
+    --     print('confetti wrapper')
+    --     confetti.add_confetti(mouse_x,mouse_y)
 
-    end
+    -- end
 
-    if key == "down" then
-        selectedMenuItem = selectedMenuItem + 1
-        if selectedMenuItem > tableCounter(menuItems) then
-            selectedMenuItem = 1
-        end
-        print(selectedMenuItem)
+    if gameState == gameStates.menu then
         
-    end
-    if key == "up" then
-        selectedMenuItem = selectedMenuItem - 1
-        
-        if selectedMenuItem == 0 then
-            selectedMenuItem = tableCounter(menuItems)
+        if key == "down" then
+            selectedMenuItem = selectedMenuItem + 1
+            if selectedMenuItem > tableCounter(menuItems) then
+                selectedMenuItem = 1
+            end
+            print(selectedMenuItem)
+            
         end
-        print(selectedMenuItem)
+        if key == "up" then
+            selectedMenuItem = selectedMenuItem - 1
+            
+            if selectedMenuItem == 0 then
+                selectedMenuItem = tableCounter(menuItems)
+            end
+            print(selectedMenuItem)
+        end
     end
 end
 
