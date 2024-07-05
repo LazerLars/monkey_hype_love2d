@@ -64,6 +64,12 @@ youWin = false
 local timer = 0
 local timerStart = false
 local mistakes = 0
+local gameState = 0
+local gameStates = {
+    logo = 0,
+    menu = 1,
+    playing = 2
+}
 
 -- index for what char the user is about to write
 local textInputIndex = 1
@@ -118,10 +124,10 @@ end
 
 
 function love.update(dt)
-    if showLogo == true then
+    if gameState == gameStates.logo then
         logoTimer = logoTimer + dt
         if logoTimer >= logoShowDuration then
-            showLogo = false
+            gameState = gameStates.playing
         end
     end
     if youWin == false then
@@ -142,7 +148,7 @@ function love.draw()
     love.graphics.push()
     love.graphics.translate(offsetX, offsetY)
     love.graphics.scale(scale, scale)
-    if showLogo == true then
+    if gameState == gameStates.logo then
         love.graphics.draw(monkeyHypeLogo, 0,0)
     else
         -- game draw logic here
@@ -314,8 +320,8 @@ function love.keypressed(key)
     end
 
     if key == "return" then
-        if showLogo == true then
-            showLogo = false
+        if gameState == gameStates.logo then
+            gameState = gameStates.playing
         end
         if youWin == true then
             youWin = false
