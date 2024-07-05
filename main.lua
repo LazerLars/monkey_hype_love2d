@@ -255,7 +255,17 @@ function love.draw()
 
         confetti.draw()
     elseif gameState == gameStates.menu then
+        local x = 40
+        local y = 40
+        local yIncement = 24
 
+        love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
+        love.graphics.rectangle('fill', x-5, y-5, 200, 24)
+        love.graphics.setColor(settings.background_color.r/255,settings.background_color.g/255, settings.background_color.b/255)
+        love.graphics.print("Next text...", x, y )
+        love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
+        y = y + yIncement
+        love.graphics.print("Confetti...", x, y )
     end
     
 
@@ -307,10 +317,13 @@ function love.keypressed(key)
         end
     end
     if key == 'escape' then
-        if gameState == gameStates.menu then
-            gameState = gameStates.playing
-        else
-            gameState = gameStates.menu
+        if gameState ~= gameStates.logo then
+            if gameState == gameStates.menu then
+                gameState = gameStates.playing
+            else
+                gameState = gameStates.menu
+            end
+            
         end
         -- gameState = gameStates.menu
         -- timer = 0
