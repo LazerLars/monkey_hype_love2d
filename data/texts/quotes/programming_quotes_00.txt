@@ -191,7 +191,7 @@
 "Programming is like sex: one mistake and you're providing support for a lifetime." Author: Michael Sinz
 "There are two ways to write error-free programs; only the third one works." Author: Alan J. Perlis
 "You can either have software quality or you can have pointer arithmetic, but you cannot have both at the same time." Author: Bertrand Meyer
-"If McDonalds were run like a software company, one out of every hundred Big Macs would give you food poisoning, and the response would be, 'We're sorry, here's a coupon for two more.' " Author: Mark Minasi
+"If McDonalds were run like a software company, one out of every hundred Big Macs would give you food poisoning, and the response would be, 'We're sorry, here's a coupon for two more.'" Author: Mark Minasi
 "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live." Author: Martin Golding
 "To err is human, but to really foul things up you need a computer." Author: Paul Ehrlich
 "A computer lets you make more mistakes faster than any invention in human history–with the possible exceptions of handguns and tequila." Author: Mitch Radcliffe) 
