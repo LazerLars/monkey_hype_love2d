@@ -150,110 +150,110 @@ function love.draw()
     love.graphics.scale(scale, scale)
     if gameState == gameStates.logo then
         love.graphics.draw(monkeyHypeLogo, 0,0)
-    else
+    elseif gameState == gameStates.playing then
         -- game draw logic here
-    -- print mouse cordinates
-    love.graphics.setColor(settings.text_color_base.r/255, settings.text_color_base.g/255, settings.text_color_base.b/255)
-    
-    -- youWin = true
-    if youWin then
-        if confettiPuf == false then
-            confettiSpawnX = confetti.randomInt(settings.width/2-50, settings.width/2+50)
-            confettiSpawnY = confetti.randomInt(settings.height/2-50, settings.height/2+50)
-            
-            confetti.add_confetti(confettiSpawnX, confettiSpawnY)
-            confetti.add_confetti(confettiSpawnX, confettiSpawnY)
-            
-            confettiPuf = true
-        end
-        timer = math.ceil(timer)
-        local x = 50
-        local y = 40
-        local yIncrement = 20
-        love.graphics.print('Time: ' .. timer .. 's', x, y)
-        y = y + yIncrement
-        -- local wpm = (timer / text_handler.text_boss.numbOfWords)*60
-        -- wpm calc = (total words - mistakes) / time
-        local wpm = (text_handler.text_boss.numbOfWords - 0) / (timer / 60)
-        wpm = math.ceil(wpm)
-        love.graphics.print('WPM: ' .. wpm, x, y)
-        y = y + yIncrement
-        love.graphics.print('Words: ' .. text_handler.text_boss.numbOfWords, x, y)
-        y = y + yIncrement
-        love.graphics.print('Mistakes: ' .. mistakes, x, y)
-        -- love.graphics.print('Confetti', 50, 50)
-        love.graphics.print('Press enter to get next text', 50, settings.height/2)
-    else
-        local x = 20
-        local y = 20 
-        local lineIncrement = 25
-        local currentText = text_handler.text_boss.quote
-        -- love.graphics.print("Creativity is thinking up new things.", x, y)
-        for key, value in ipairs(text_handler.text_boss.linesTable) do
-            -- print(value['lineStart'])
-            --print line numbers
-            -- love.graphics.print(key, x-20, y)
-            local currentLine = string.sub(currentText, value.lineStart, value.lineEnd)
-            -- print(currentLine)
-            love.graphics.print(currentLine, x, y)
-            y = y + lineIncrement
-            -- print(value.lineStart)
-            -- print(value.lineEnd)
-        end
-
-        local x = 20
-        local y = 20
-        for index, value in ipairs(text_handler.text_boss.linesTable) do
-            local lineStart = value.lineStart
-            local lineEnd = value.lineEnd
-            if #text_buffer_list.textInput < lineEnd then
-                lineEnd = #text_buffer_list.textInput
-            end
-            if #text_buffer_list.textInput > 0 then
-                local currenLine = string.sub(text_buffer_list.textInput, lineStart, lineEnd)
-                love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
-                love.graphics.print(currenLine, x,y)
-                y = y + lineIncrement
-            end
-        end
-    end
-
-    
-
-    love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
-    
-    -- ---------------------------------
-    
-    -- test_lines_on_screen()
-    -- set user input text color
-
-    -- text can be written between x=32 and x=608
-    -- max 36 chars on a single line
-    -- 20 pixel beteween each line
-    -- max 16 lines
-    -- first line start at x = 20
-    -- draw text to write
-    -- love.graphics.print("Somewhere over the rainbow ^^", 32, settings.height/2)
-    
-    --draw user text inptu
-    
-    -- love.graphics.print(text_buffer_list.textInput, 32, settings.height/2)
-
-    -- love.graphics.print("AA", 612, settings.height/2)
-    -- love.graphics.print("AA", 1, settings.height/2)
-    -- reset text color to base
-    -- print input length and mouse cordinates
-    
-    if debugMode then
-        love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
-
-        love.graphics.print("_ input#" .. #text_buffer_list.textInput, 250, 1)
-    
-        love.graphics.circle('fill', mouse_x, mouse_y, 5)
+        -- print mouse cordinates
+        love.graphics.setColor(settings.text_color_base.r/255, settings.text_color_base.g/255, settings.text_color_base.b/255)
         
-    end
+        -- youWin = true
+        if youWin then
+            if confettiPuf == false then
+                confettiSpawnX = confetti.randomInt(settings.width/2-50, settings.width/2+50)
+                confettiSpawnY = confetti.randomInt(settings.height/2-50, settings.height/2+50)
+                
+                confetti.add_confetti(confettiSpawnX, confettiSpawnY)
+                confetti.add_confetti(confettiSpawnX, confettiSpawnY)
+                
+                confettiPuf = true
+            end
+            timer = math.ceil(timer)
+            local x = 50
+            local y = 40
+            local yIncrement = 20
+            love.graphics.print('Time: ' .. timer .. 's', x, y)
+            y = y + yIncrement
+            -- local wpm = (timer / text_handler.text_boss.numbOfWords)*60
+            -- wpm calc = (total words - mistakes) / time
+            local wpm = (text_handler.text_boss.numbOfWords - 0) / (timer / 60)
+            wpm = math.ceil(wpm)
+            love.graphics.print('WPM: ' .. wpm, x, y)
+            y = y + yIncrement
+            love.graphics.print('Words: ' .. text_handler.text_boss.numbOfWords, x, y)
+            y = y + yIncrement
+            love.graphics.print('Mistakes: ' .. mistakes, x, y)
+            -- love.graphics.print('Confetti', 50, 50)
+            love.graphics.print('Press enter to get next text', 50, settings.height/2)
+        else
+            local x = 20
+            local y = 20 
+            local lineIncrement = 25
+            local currentText = text_handler.text_boss.quote
+            -- love.graphics.print("Creativity is thinking up new things.", x, y)
+            for key, value in ipairs(text_handler.text_boss.linesTable) do
+                -- print(value['lineStart'])
+                --print line numbers
+                -- love.graphics.print(key, x-20, y)
+                local currentLine = string.sub(currentText, value.lineStart, value.lineEnd)
+                -- print(currentLine)
+                love.graphics.print(currentLine, x, y)
+                y = y + lineIncrement
+                -- print(value.lineStart)
+                -- print(value.lineEnd)
+            end
 
-    confetti.draw()
+            local x = 20
+            local y = 20
+            for index, value in ipairs(text_handler.text_boss.linesTable) do
+                local lineStart = value.lineStart
+                local lineEnd = value.lineEnd
+                if #text_buffer_list.textInput < lineEnd then
+                    lineEnd = #text_buffer_list.textInput
+                end
+                if #text_buffer_list.textInput > 0 then
+                    local currenLine = string.sub(text_buffer_list.textInput, lineStart, lineEnd)
+                    love.graphics.setColor(settings.text_color_user_intput.r/255,settings.text_color_user_intput.g/255, settings.text_color_user_intput.b/255)
+                    love.graphics.print(currenLine, x,y)
+                    y = y + lineIncrement
+                end
+            end
+        end
+
+        
+
+        love.graphics.setColor(settings.text_color_base.r/255,settings.text_color_base.g/255, settings.text_color_base.b/255)
+        
+        -- ---------------------------------
+        
+        -- test_lines_on_screen()
+        -- set user input text color
+
+        -- text can be written between x=32 and x=608
+        -- max 36 chars on a single line
+        -- 20 pixel beteween each line
+        -- max 16 lines
+        -- first line start at x = 20
+        -- draw text to write
+        -- love.graphics.print("Somewhere over the rainbow ^^", 32, settings.height/2)
+        
+        --draw user text inptu
+        
+        -- love.graphics.print(text_buffer_list.textInput, 32, settings.height/2)
+
+        -- love.graphics.print("AA", 612, settings.height/2)
+        -- love.graphics.print("AA", 1, settings.height/2)
+        -- reset text color to base
+        -- print input length and mouse cordinates
+        
+        if debugMode then
+            love.graphics.print("mouse: " .. mouse_x .. "," .. mouse_y, 1, 1)
+
+            love.graphics.print("_ input#" .. #text_buffer_list.textInput, 250, 1)
+        
+            love.graphics.circle('fill', mouse_x, mouse_y, 5)
+            
+        end
+
+        confetti.draw()
 
     end
     
