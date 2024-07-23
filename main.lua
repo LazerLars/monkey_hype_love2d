@@ -79,7 +79,7 @@ screen_rules = {
 }
 
 local logoTimer = 0 
-local logoShowDuration = 10
+local logoShowDuration = 5
 local showLogo = true
 youWin = false
 local timer = 0
@@ -484,7 +484,7 @@ end
 
 function play_click_sound()
     -- local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
-    local sfx_click = love.audio.newSource('sfx/click_02.wav', 'stream')
+    local sfx_click = love.audio.newSource('sfx/click.wav', 'static')
     love.audio.play(sfx_click)
     sfx_click:play()
 end
