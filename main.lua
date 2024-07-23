@@ -98,6 +98,7 @@ mouse_x, mouse_y = ...
 
 function love.load()
     monkeyHypeLogo = love.graphics.newImage('sprites/monkey_hype_logo_640_360.png')
+
     love.mouse.setVisible(false)
     love.keyboard.setKeyRepeat(true)
     
@@ -484,7 +485,7 @@ end
 
 function play_click_sound()
     -- local sfx_click = love.audio.newSource('sfx/razor_black_widdow_green_click.mp3', 'stream')
-    local sfx_click = love.audio.newSource('sfx/click_02.wav', 'stream')
+    local sfx_click = love.audio.newSource('sfx/click.wav', 'static')
     love.audio.play(sfx_click)
     sfx_click:play()
 end
