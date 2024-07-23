@@ -35,24 +35,24 @@ text_handler.text_boss = {
 
 -- used to read individual words in the data/words folder
 function text_handler.read_text_file_to_table(file_name)
-    -- if we don't have the words args
-    -- Open the file in read mode
-    local file, err = io.open(file_name, "r")
-    -- local file, err = io.open(text_handler.text_file_names.common_eng_words, "r")
-    -- local file, err = io.open(text_handler.text_file_names.wiki_swear_words, "r")
-    -- local file, err = io.open(text_handler.text_file_names.programming_quotes_00, "r")
+    -- Construct the path relative to the game's directory
+    local file_path = file_name
+    print(file_path)
+    print(file_name)
+    -- Use love.filesystem to open the file
+    local file, err = love.filesystem.read(file_path)
 
-   -- Check for errors
-   if not file then
-       error("Error opening file: " .. err)
-   end
-   -- read individual words and insert into the words list
-    for line in file:lines() do
+    -- Check for errors
+    if not file then
+        error("Error opening file: " .. file_path .. ": " .. err)
+    end
+
+    -- Split the file contents into lines
+    for line in file:gmatch("[^\r\n]+") do
         table.insert(text_handler.words_list, line)
     end
 
-    file:close()
---    text_handler.print_out_words_list_quotes()
+    -- Shuffle the words list
     text_handler.shuffle_words_list()
 end
 

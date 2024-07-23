@@ -347,7 +347,7 @@ No change is bad" Author: Toyota President Katsuaki Watanabe (Osono et al 2008, 
 "The bitterness of poor quality remains long after the sweetness of meeting the schedule has been forgotten." Author: Anonymous
 "One bad programmer can easily create two new jobs a year." Author: David Parnas
 "Don't document bad code - rewrite it." Author: Kernighan and Plauger
-"3 Errors walk into a bar. The barman says, "normally I'd Throw you all out, but tonight I'll make an Exception." Author: @iamdevloper
+    "3 Errors walk into a bar. The barman says, "normally I'd Throw you all out, but tonight I'll make an Exception." Author: @iamdevloper
 "Weeks of programming can save you hours of planning." Author: Anonymous
 "If you think it's expensive to hire a professional, wait until you hire an amateur."
 "Programming can be fun, so can cryptography; however they should not be combined." Author: Kreitzberg and Shneiderman
