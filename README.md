@@ -1,5 +1,5 @@
 # monkey_hype_love2d
-![](sprites/gifs/monkeyhype_compressed_00.gif)
+![](sprites/gifs/monkeyhype_compressed_00.gif)  
 demake'ish of monkey type in love2d. Monkey See Monkey Type in Love2d c,")
 
 
