@@ -1,8 +1,7 @@
 # monkey_hype_love2d
-![](sprites/monkey_hype_logo_640_360.png)  
+![](sprites/gifs/monkeyhype_compressed_00.gif)
 demake'ish of monkey type in love2d. Monkey See Monkey Type in Love2d c,")
 
-![](sprites/gifs/monkeyhype_compressed_00.gif)
 
 programming_quotes.txt
 
