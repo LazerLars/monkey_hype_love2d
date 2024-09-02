@@ -407,6 +407,7 @@ function love.keypressed(key)
                 text_handler.select_next_qoute()
                 timer = 0
                 mistakes = 0
+                confetti.list = {}
             end
 
             if selectedMenuItem == menuItems.confetti then
