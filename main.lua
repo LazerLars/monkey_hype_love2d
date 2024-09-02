@@ -20,7 +20,7 @@ local text_buffer_list = {
 -- | width        | 1920        | 1920 | 960 | 640 | 480 | 384 | 320 | 240 | 192 |
 -- | height       | 1080        | 1080 | 540 | 360 | 270 | 216 | 180 | 135 | 108 |
 -- +--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
-local settings = {
+    local settings = {
     fullscreen = false,
     screenScaler = 2,
     width = 640,
@@ -351,6 +351,10 @@ function love.keypressed(key)
             textInputIndex = textInputIndex - 1
         end
     end
+    if key == "space" then
+        text_buffer_list.textInput = text_buffer_list.textInput .. " "
+        textInputIndex = textInputIndex + 1
+    end
     if key == 'escape' then
         if timerStart == true then
             timerStart = false
@@ -442,6 +446,13 @@ end
 
 
 function love.textinput(t)
+    -- prevent space from been added here, since love.js wont detect space presses or return with this function.
+    -- that needs to be done with
+    -- function love.keypressed(key) ...
+    -- if key == 'space' then ....
+    if t == " " then
+        return
+    end
     if timerStart == false then
         timerStart = true
     end

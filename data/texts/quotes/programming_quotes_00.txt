@@ -49,7 +49,7 @@
 "Simplicity, carried to the extreme, becomes elegance." Author: Jon Franklin
 "A program is never less than 90% complete, and never more than 95% complete." Author: Terry Baker
 "When you are stuck in a traffic jam with a Porsche, all you do is burn more gas in idle. Scalability is about building wider roads, not about building faster cars." Author: Steve Swartz
-"Everyone by now presumably knows about the danger of premature optimization. I think we should be just as worried about premature design — designing too early what a program should do." Author: Paul Graham
+"Everyone by now presumably knows about the danger of premature optimization. I think we should be just as worried about premature design - designing too early what a program should do." Author: Paul Graham
 "Programming without an overall architecture or design in mind is like exploring a cave with only a flashlight: You don't know where you've been, you don't know where you're going, and you don't know quite where you are." Author: Danny Thorpe
 "The best way to predict the future is to implement it." Author: David Heinemeier Hansson
 "We need above all to know about changes; no one wants or needs to be reminded 16 hours a day that his shoes are on." Author: David Hubel
@@ -77,7 +77,7 @@
 "I didn't work hard to make Ruby perfect for everyone, because you feel differently from me. No language can be perfect for everyone. I tried to make Ruby perfect for me, but maybe it's not perfect for you. The perfect language for Guido van Rossum is probably Python." Author: Yukihiro Matsumoto, aka "Matz", creator of Ruby
 "XML is not a language in the sense of a programming language any more than sketches on a napkin are a language." Author: Charles Simonyi
 "BASIC is to computer programming as QWERTY is to typing." Author: Seymour Papert
-"It has been discovered that C++ provides a remarkable facility for concealing the trivial details of a program — such as where its bugs are." Author: David Keppel
+"It has been discovered that C++ provides a remarkable facility for concealing the trivial details of a program - such as where its bugs are." Author: David Keppel
 "UNIX is simple. It just takes a genius to understand its simplicity." Author: Dennis Ritchie
 "Some people, when confronted with a problem, think 'I know, I'll use regular expressions.' Now they have two problems." Author: Jamie Zawinski
 "I think computer viruses should count as life. I think it says something about human nature that the only form of life we have created so far is purely destructive. We've created life in our own image." Author: Stephen Hawking
@@ -355,7 +355,7 @@ No change is bad" Author: Toyota President Katsuaki Watanabe (Osono et al 2008, 
 "My definition of an expert in any field is a person who knows enough about what's really going on to be scared." Author: P. J. Plauger
 "First, solve the problem. Then, write the code." Author: John Johnson
 "Programming is not a zero-sum game. Teaching something to a fellow programmer doesn't take it away from you." Author: John Carmack
-"One of my most productive days was throwing away 1000 lines of code — Ken Thompson
+"One of my most productive days was throwing away 1000 lines of code - Ken Thompson
 "When in doubt, use brute force." Author: Ken Thompson
 "Deleted code is debugged code." Author: Jeff Sickel
 "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." Author: Brian W. Kernighan and P. J. Plauger in The Elements of Programming Style.
@@ -366,21 +366,21 @@ No change is bad" Author: Toyota President Katsuaki Watanabe (Osono et al 2008, 
 "Life is too short to run proprietary software." Author: Bdale Garbee
 "The central enemy of reliability is complexity." Author: Geer et al.
 "Simplicity is prerequisite for reliability." Author: Edsger W. Dijkstra
-"Simplicity is the ultimate sophistication." — Leonardo da Vinci
-"The unavoidable price of reliability is simplicity." — C.A.R. Hoare
-"You can't trust code that you did not totally create yourself." — Ken Thompson
-"Compatibility means deliberately repeating other people's mistakes." — David Wheeler
-"Debugging time increases as a square of the program's size." — Chris Wenham
+"Simplicity is the ultimate sophistication." - Leonardo da Vinci
+"The unavoidable price of reliability is simplicity." - C.A.R. Hoare
+"You can't trust code that you did not totally create yourself." - Ken Thompson
+"Compatibility means deliberately repeating other people's mistakes." - David Wheeler
+"Debugging time increases as a square of the program's size." - Chris Wenham
 "Before software can be reusable it first has to be usable. - Unknown
 "The best code is no code at all." Author: Unknown
-"No code is faster than no code." — merb motto
-"Program testing can be a very effective way to show the presence of bugs, but is hopelessly inadequate for showing their absence." — Edsger W. Dijkstra
+"No code is faster than no code." - merb motto
+"Program testing can be a very effective way to show the presence of bugs, but is hopelessly inadequate for showing their absence." - Edsger W. Dijkstra
 "Parkinson's Law "Work expands so as to fill the time available for its completion."
-"Code never lies, comments sometimes do." — Ron Jeffries
-"If we'd asked the customers what they wanted, they would have said "faster horses" — Henry Ford
+"Code never lies, comments sometimes do." - Ron Jeffries
+"If we'd asked the customers what they wanted, they would have said "faster horses" - Henry Ford
 "With diligence it is possible to make anything run slowly." Author: Tom Duff
-"Software obeys the law of gaseous expansion – it continues to grow until memory is completely filled." — Larry Gleason
-"A distributed system is one in which the failure of a computer you didn't even know existed can render your own computer unusable." — Leslie Lamport
+"Software obeys the law of gaseous expansion – it continues to grow until memory is completely filled." - Larry Gleason
+"A distributed system is one in which the failure of a computer you didn't even know existed can render your own computer unusable." - Leslie Lamport
 "The proper use of comments is to compensate for our failure to express ourself in code." Author: Robert C. MartinClean Code
 "Incorrect documentation is often worse than no documentation." Author: Bertrand Meyer
 "Security is a state of mind." Author: NSA Security Manua
