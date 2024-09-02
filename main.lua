@@ -85,6 +85,7 @@ youWin = false
 local timer = 0
 local timerStart = false
 local mistakes = 0
+local spacePressed = false
 
 
 -- index for what char the user is about to write
@@ -351,9 +352,18 @@ function love.keypressed(key)
             textInputIndex = textInputIndex - 1
         end
     end
-    if key == "space" then
-        text_buffer_list.textInput = text_buffer_list.textInput .. " "
-        textInputIndex = textInputIndex + 1
+    if key == "space" and spacePressed == false then
+        -- text_buffer_list.textInput = text_buffer_list.textInput .. " "
+        -- textInputIndex = textInputIndex + 1
+        spacePressed = true
+        play_click_sound()
+
+        if text_handler.text_boss.textAsCharTable[textInputIndex] == " " then
+            text_buffer_list.textInput = text_buffer_list.textInput .. " "
+            textInputIndex = textInputIndex + 1
+        else    
+            mistakes = mistakes + 1
+        end
     end
     if key == 'escape' then
         if timerStart == true then
@@ -459,6 +469,10 @@ function love.textinput(t)
     end
     if timerStart == false then
         timerStart = true
+    end
+    if spacePressed == true then
+        
+        spacePressed = false
     end
     play_click_sound()
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
