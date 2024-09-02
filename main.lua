@@ -390,8 +390,12 @@ function love.keypressed(key)
         end
         if gameState == gameStates.menu then
             if selectedMenuItem == menuItems.nextText then
-                text_handler.select_next_qoute()
                 gameState = gameStates.playing
+                textInputIndex = 1
+                text_buffer_list.textInput = ""
+                text_handler.select_next_qoute()
+                timer = 0
+                mistakes = 0
             end
 
             if selectedMenuItem == menuItems.confetti then
