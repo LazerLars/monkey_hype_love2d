@@ -52,17 +52,19 @@ end
 
 function confetti.add_confetti(x, y)
     for i = 1, confetti.randomInt(100, 500) do
-        local x_random_dir = confetti.randomInt(1, 100)
+        local x_random_dir = math.random(1,100); math.random(1,100); math.random(1,100)
         local x_direction = (x_random_dir >= 50) and 1 or -1
 
-        local y_random_dir = confetti.randomInt(1, 100)
+        local y_random_dir = math.random(1,100); math.random(1,100); math.random(1,100)
         local y_direction = (y_random_dir >= 50) and 1 or -1
 
-        local newX = confetti.randomInt(x, x + 20)
-        local newY = confetti.randomInt(y, y + 20)
-        local color = confetti.randomInt(1, 8)
-        local x_speed = confetti.randomInt(10, 200) * x_direction  -- Adjust speed based on direction
-        local y_speed = confetti.randomInt(10, 200) * y_direction  -- Adjust speed based on direction
+        local newX = math.random(x, x + 20); math.random(x, x + 20); math.random(x, x + 20)
+        local newY = math.random(y, y + 20); math.random(y, y + 20); math.random(y, y + 20)
+        local color = math.random(1, 8); math.random(1, 8); math.random(1, 8);
+        local x_speed = math.random(10, 200); math.random(10, 200); math.random(10, 200);
+        x_speed = x_speed * x_direction  -- Adjust speed based on direction
+        local y_speed = math.random(10, 200); math.random(10, 200); math.random(10, 200);
+        y_speed = y_speed * y_direction  -- Adjust speed based on direction
 
         local confetti_obj = {
             x = newX,

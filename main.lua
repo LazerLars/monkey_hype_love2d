@@ -20,7 +20,7 @@ local text_buffer_list = {
 -- | width        | 1920        | 1920 | 960 | 640 | 480 | 384 | 320 | 240 | 192 |
 -- | height       | 1080        | 1080 | 540 | 360 | 270 | 216 | 180 | 135 | 108 |
 -- +--------------+-------------+------+-----+-----+-----+-----+-----+-----+-----+
-local settings = {
+    local settings = {
     fullscreen = false,
     screenScaler = 2,
     width = 640,
@@ -85,6 +85,7 @@ youWin = false
 local timer = 0
 local timerStart = false
 local mistakes = 0
+local spacePressed = false
 
 
 -- index for what char the user is about to write
@@ -97,6 +98,7 @@ local confettiPuf = false
 mouse_x, mouse_y = ...
 
 function love.load()
+    math.randomseed( os.time() )
     monkeyHypeLogo = love.graphics.newImage('sprites/monkey_hype_logo_640_360.png')
     love.mouse.setVisible(false)
     love.keyboard.setKeyRepeat(true)
@@ -351,6 +353,19 @@ function love.keypressed(key)
             textInputIndex = textInputIndex - 1
         end
     end
+    if key == "space" and spacePressed == false then
+        -- text_buffer_list.textInput = text_buffer_list.textInput .. " "
+        -- textInputIndex = textInputIndex + 1
+        spacePressed = true
+        play_click_sound()
+
+        if text_handler.text_boss.textAsCharTable[textInputIndex] == " " then
+            text_buffer_list.textInput = text_buffer_list.textInput .. " "
+            textInputIndex = textInputIndex + 1
+        else    
+            mistakes = mistakes + 1
+        end
+    end
     if key == 'escape' then
         if timerStart == true then
             timerStart = false
@@ -386,8 +401,13 @@ function love.keypressed(key)
         end
         if gameState == gameStates.menu then
             if selectedMenuItem == menuItems.nextText then
-                text_handler.select_next_qoute()
                 gameState = gameStates.playing
+                textInputIndex = 1
+                text_buffer_list.textInput = ""
+                text_handler.select_next_qoute()
+                timer = 0
+                mistakes = 0
+                confetti.list = {}
             end
 
             if selectedMenuItem == menuItems.confetti then
@@ -442,8 +462,19 @@ end
 
 
 function love.textinput(t)
+    -- prevent space from been added here, since love.js wont detect space presses or return with this function.
+    -- that needs to be done with
+    -- function love.keypressed(key) ...
+    -- if key == 'space' then ....
+    if t == " " then
+        return
+    end
     if timerStart == false then
         timerStart = true
+    end
+    if spacePressed == true then
+        
+        spacePressed = false
     end
     play_click_sound()
     if text_buffer_list.textInput ~= text_handler.text_boss.quote then
