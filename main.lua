@@ -98,6 +98,7 @@ local confettiPuf = false
 mouse_x, mouse_y = ...
 
 function love.load()
+    math.randomseed( os.time() )
     monkeyHypeLogo = love.graphics.newImage('sprites/monkey_hype_logo_640_360.png')
     love.mouse.setVisible(false)
     love.keyboard.setKeyRepeat(true)
